@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameEngine
 {
-    public class Players
+    public class Move
     {
     }
 }

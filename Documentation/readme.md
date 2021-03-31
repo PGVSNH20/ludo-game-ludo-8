@@ -13,28 +13,28 @@ Documentation for Ludo Game by Broman & Bjornsson 2021 ©
 
 
 
-## Database Structure
+## Classes
 
-### Table: Player
+### Player
 * PlayerID
-* GamerTag
-* 
-*
+* Name
+* Wins
+* Losses
 
-### Table: Piece
+### Piece
 * PieceID
-* Color
-* 
+* Name (color)
+* StartingPosition
 *
 
-### Table: Board
+### Board
 * NestID
 * MainTrack
 * FinalTrack
 *
 
-### Table: Move
+### Move
 * MoveID
-* 
-*
-*
+* PlayerID
+* Position
+* DiceValue

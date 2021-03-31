@@ -3,7 +3,6 @@ Documentation for Ludolicious by Broman & Bjornsson 2021 ©
 
 ## User stories
 
-### [Added 2021-03-30]
 * As a user I want to choose the amount (2-4) of players.
 * As a user I want to choose a color (Red, Green, Blue or Yellow)
 * As a user I want to choose my name in the game so that friends recognize me.

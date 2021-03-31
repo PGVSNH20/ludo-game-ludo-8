@@ -1,5 +1,5 @@
 # Documentation
-Documentation for Ludo Game by Broman & Bjornsson 2021 ©
+Documentation for Ludolicious by Broman & Bjornsson 2021 ©
 
 ## User stories
 

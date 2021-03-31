@@ -11,6 +11,5 @@ namespace GameEngine
         public int PlayerID { get; set; }
         public string Name { get; set; }
         public string Color { get; set; }
-        public int WinRatio { get; set; }
     }
 }

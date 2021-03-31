@@ -8,9 +8,9 @@ namespace GameEngine
 {
     public class Dice
     {
-        private int Value { get; set; }
+        static private int Value { get; set; }
 
-        public int RollDice()
+        static public int RollDice()
         {
             Random rnd = new Random();
             Value = rnd.Next(1, 7);

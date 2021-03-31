@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameEngine;
+using System;
 
 namespace LudoGame
 {
@@ -6,7 +7,15 @@ namespace LudoGame
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            bool isRunning = true;
+            do {
+                Console.WriteLine("1. Start new game");
+                Console.WriteLine("2. Resume ongoing game");
+                Console.WriteLine("3. Load game history");
+                Console.WriteLine("0. Exit program");
+                Console.Write("\nEnter your choice :\t");
+                Console.ReadLine();
+            } while (isRunning);
         }
 
         public static void StartGame()
@@ -24,12 +33,12 @@ namespace LudoGame
 
         }
 
-        public static void Settings()
+        public static void ExitGame()
         {
 
         }
 
-        public static void ExitGame()
+        public static void RenderGame()
         {
 
         }

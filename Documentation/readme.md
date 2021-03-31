@@ -38,6 +38,7 @@ Documentation for Ludo Game by Broman & Bjornsson 2021 ©
 
 ### Move
 * MoveID
+* Forward
 * PlayerID
 * Position
 * DiceValue
@@ -45,3 +46,4 @@ Documentation for Ludo Game by Broman & Bjornsson 2021 ©
 
 ## Methods
 * RollDice() for rolling the dice and returning a random value between 1 and 6.
+* Forward() for moving forward with a piece after calling for the value returned from rolling the dice

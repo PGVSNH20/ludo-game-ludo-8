@@ -27,6 +27,9 @@ Documentation for Ludo Game by Broman & Bjornsson 2021 ©
 * StartingPosition
 *
 
+### Dice
+* Value
+
 ### Board
 * NestID
 * MainTrack
@@ -38,3 +41,7 @@ Documentation for Ludo Game by Broman & Bjornsson 2021 ©
 * PlayerID
 * Position
 * DiceValue
+
+
+## Methods
+* Method RollDice() for rolling the dice and returning a value between 1 and 6.

@@ -9,5 +9,6 @@ namespace GameEngine
     public class Board
     {
         public List<Move> Moves { get; set; }
+        public List<Player> Players { get; set; }
     }
 }

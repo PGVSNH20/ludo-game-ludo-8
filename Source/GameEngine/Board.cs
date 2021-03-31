@@ -8,5 +8,6 @@ namespace GameEngine
 {
     public class Board
     {
+        public List<Move> Moves { get; set; }
     }
 }

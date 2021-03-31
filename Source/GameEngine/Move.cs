@@ -8,5 +8,8 @@ namespace GameEngine
 {
     public class Move
     {
+        public int PlayerID { get; set; }
+        public int PieceID { get; set; }
+        public int DiceNumber { get; set; }
     }
 }

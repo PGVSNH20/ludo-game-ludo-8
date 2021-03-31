@@ -48,7 +48,7 @@ Documentation for Ludolicious by Broman & Bjornsson 2021 ©
 * RollDice() for rolling the dice and returning a random value between 1 and 6.
 * Forward() for moving forward with a piece after calling for the value returned from rolling the dice
 * Occupied() for checking if the position on the board is occupied
-* FalconPunch() for punching the opponents piece of the board if landing on an occupied spot
+* PushOpponent() for pushing the opponents piece off the board if landing on an occupied spot
 * StartGame()
 * ResumeGame()
 * LoadGame()

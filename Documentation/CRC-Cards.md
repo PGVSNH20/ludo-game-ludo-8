@@ -1,3 +1,6 @@
+# CRC-CARDS
+### Documentation for Ludolicious by Broman & Bjornsson 2021 ©
+
 ## PROGRAM
 #### RESPONSIBILITIES
 * Responsible for gluing all classes together to a working game

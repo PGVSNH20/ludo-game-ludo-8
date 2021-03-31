@@ -11,8 +11,9 @@ Documentation for Ludo Game by Broman & Bjornsson 2021 ©
 * As a user I want to pick up a game where it ended after exiting the console.
 * As a user i want to see whose turn it is and where i am on the board when starting again.
 
-## Database Structure
 
+
+## Database Structure
 
 ### Table: Player
 * PlayerID
@@ -21,13 +22,19 @@ Documentation for Ludo Game by Broman & Bjornsson 2021 ©
 *
 
 ### Table: Piece
+* PieceID
+* Color
+* 
 *
-*
-*
+
+### Table: Board
+* NestID
+* MainTrack
+* FinalTrack
 *
 
 ### Table: Move
-*
-*
+* MoveID
+* 
 *
 *

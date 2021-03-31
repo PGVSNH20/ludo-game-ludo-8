@@ -8,13 +8,30 @@ namespace GameEngine
 {
     public class Dice
     {
-        static private int Value { get; set; }
+        public static int Value { get; set; }
 
-        static public int RollDice()
+        public static int RollDice()
         {
             Random rnd = new Random();
             Value = rnd.Next(1, 7);
-            return Value;
+
+            if (Value == 6)
+            {
+                LeaveNestMaybe();
+            }
+
+            else
+            {
+                return Value;
+            }
+        } 
+
+        public void LeaveNestMaybe()
+        {
+            // Nån slags meny här om man vill lämna boet eller flytta en annan pjäs som redan är ute på brädet
         }
+
+
+
     }
 }

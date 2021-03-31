@@ -12,8 +12,8 @@ namespace LudoGame
         public static void Main(string[] args)
         {
 
-            
-            
+
+
             bool isRunning = true;
             do
             {

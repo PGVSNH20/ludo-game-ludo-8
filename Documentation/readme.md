@@ -44,4 +44,4 @@ Documentation for Ludo Game by Broman & Bjornsson 2021 ©
 
 
 ## Methods
-* Method RollDice() for rolling the dice and returning a value between 1 and 6.
+* RollDice() for rolling the dice and returning a value between 1 and 6.

@@ -11,6 +11,5 @@ namespace GameEngine
     {
         public int PieceID { get; set; }
         public string Color { get; set; }
-        public int StartingPosition { get; set; } 
     }
 }

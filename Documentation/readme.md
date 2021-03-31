@@ -12,3 +12,22 @@ Documentation for Ludo Game by Broman & Bjornsson 2021 ©
 * As a user i want to see whose turn it is and where i am on the board when starting again.
 
 ## Database Structure
+
+
+### Table: Player
+* PlayerID
+* GamerTag
+* 
+*
+
+### Table: Piece
+*
+*
+*
+*
+
+### Table: Move
+*
+*
+*
+*

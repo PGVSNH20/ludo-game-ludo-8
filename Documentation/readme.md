@@ -3,7 +3,6 @@ Documentation for Ludolicious by Broman & Bjornsson 2021 ©
 
 ## User stories
 
-### [Added 2021-03-30]
 * As a user I want to choose the amount (2-4) of players.
 * As a user I want to choose a color (Red, Green, Blue or Yellow)
 * As a user I want to choose my name in the game so that friends recognize me.
@@ -11,43 +10,33 @@ Documentation for Ludolicious by Broman & Bjornsson 2021 ©
 * As a user I want to pick up a game where it ended after exiting the console.
 * As a user i want to see whose turn it is and where i am on the board when starting again.
 
-
-
 ## Classes
 
 ### Player
 * PlayerID
 * Name
 * Color
-* Wins
-* Losses
+* WinRatio (Wins/Losses)
 
 ### Piece
 * PieceID
 * Color (Red, Blue, Green, Yellow)
-* StartingPosition (nest)
-*
 
 ### Dice
 * Value
 
 ### Board
-* NestID
-* MainTrack
-* FinalTrack
-*
+* Moves
 
 ### Move
 * MoveID
-* Forward
 * PlayerID
-* Position
+* PieceID
 * DiceValue
-
 
 ## Methods
 * RollDice() for rolling the dice and returning a random value between 1 and 6.
-* Forward() for moving forward with a piece after calling for the value returned from rolling the dice
+* Forward() for moving forward with a piece after calling for the value returned from rolling the dice. Adderar tärningsslag.
 * Occupied() for checking if the position on the board is occupied
 * PushOpponent() for pushing the opponents piece off the board if landing on an occupied spot
 * StartGame()

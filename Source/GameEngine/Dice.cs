@@ -10,7 +10,7 @@ namespace GameEngine
     {
         private int Value { get; set; }
 
-        public int Roll()
+        public int RollDice()
         {
             Random rnd = new Random();
             Value = rnd.Next(1, 7);

@@ -1,5 +1,5 @@
 # Methods
-## Ludolicious by Broman & Bjornsson 2021 ©
+## Documentation for Ludolicious by Broman & Bjornsson 2021 ©
 
 * RollDice() for rolling the dice and returning a random value between 1 and 6.
 * Forward() for moving forward with a piece after calling for the value returned from rolling the dice. Adderar tärningsslag.

@@ -1,20 +1,36 @@
 ﻿using GameEngine;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace LudoGame
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+
+            
+            
             bool isRunning = true;
-            do {
+            do
+            {
+                var rollValue = Dice.RollDice();
+
                 Console.WriteLine("1. Start new game");
                 Console.WriteLine("2. Resume ongoing game");
                 Console.WriteLine("3. Load game history");
                 Console.WriteLine("0. Exit program");
                 Console.Write("\nEnter your choice :\t");
                 Console.ReadLine();
+
+
+                Console.WriteLine("You roll the dice and get " + rollValue + " moves");
+
+
+
             } while (isRunning);
         }
 

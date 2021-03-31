@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace GameEngine
 {
 
-    class Piece
+    public class Piece
     {
         public int PieceID { get; set; }
         public string Color { get; set; }

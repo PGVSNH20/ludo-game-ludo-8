@@ -18,13 +18,14 @@ Documentation for Ludolicious by Broman & Bjornsson 2021 ©
 ### Player
 * PlayerID
 * Name
+* Color
 * Wins
 * Losses
 
 ### Piece
 * PieceID
-* Name (color)
-* StartingPosition
+* Color (Red, Blue, Green, Yellow)
+* StartingPosition (nest)
 *
 
 ### Dice

@@ -24,7 +24,7 @@ namespace GameEngine
         {
             PlayerID = playerID;
             PieceID = pieceID;
-            DiceValue = diceValue;  
+            DiceValue = diceValue;
         }
 
         // Om en piece står på samma moves som en annan piece så ska den knuffa ut motståndaren från brädet

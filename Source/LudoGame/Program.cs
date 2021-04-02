@@ -18,7 +18,7 @@ namespace LudoGame
                 var success = Int32.TryParse(userInput, out int result);
                 Console.Clear();
 
-                if(success)
+                if (success)
                 {
                     switch (result)
                     {

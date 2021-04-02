@@ -6,29 +6,22 @@ using System.Threading.Tasks;
 
 namespace GameEngine
 {
-    public class Player
+    public class Player : IPlayer
     {
-        public int PlayerID { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
         public string Color { get; set; }
-        public bool AI { get; set; }
 
-        public Player(string color, bool ai)
+        public Player(string color)
         {
-            if (ai == true)
-                Name = $"{color} AI";
-            else
-                Name = $"{color} Player";
-
+            Name = $"{color} Player";
             Color = color;
-            AI = ai;
         }
 
-        public Player(string name, string color, bool ai)
+        public Player(string name, string color)
         {
             Name = name;
             Color = color;
-            AI = ai;
         }
     }
 }

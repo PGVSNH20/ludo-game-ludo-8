@@ -14,12 +14,7 @@ namespace LudoGame
             bool isRunning = true;
             do
             {
-                Console.WriteLine("1. Start new game");
-                Console.WriteLine("2. Resume ongoing game");
-                Console.WriteLine("3. Load game history");
-                Console.WriteLine("0. Exit program");
-                Console.Write("\nEnter your choice :\t");
-                var userInput = Console.ReadLine();
+                var userInput = PrintMenu();
                 var success = Int32.TryParse(userInput, out int result);
                 Console.Clear();
 
@@ -72,6 +67,16 @@ namespace LudoGame
         public static void RenderGame()
         {
 
+        }
+
+        public static string PrintMenu()
+        {
+            Console.WriteLine("1. Start new game");
+            Console.WriteLine("2. Resume ongoing game");
+            Console.WriteLine("3. Load game history");
+            Console.WriteLine("0. Exit program");
+            Console.Write("\nEnter your choice :\t");
+            return Console.ReadLine();
         }
 
         public static void Clear()

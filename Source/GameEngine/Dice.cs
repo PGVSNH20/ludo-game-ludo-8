@@ -14,24 +14,7 @@ namespace GameEngine
         {
             Random rnd = new Random();
             Value = rnd.Next(1, 7);
-
-            if (Value == 6)
-            {
-                LeaveNestMaybe();
-            }
-
-            else
-            {
-                return Value;
-            }
+            return Value;
         } 
-
-        public void LeaveNestMaybe()
-        {
-            // Nån slags meny här om man vill lämna boet eller flytta en annan pjäs som redan är ute på brädet
-        }
-
-
-
     }
 }

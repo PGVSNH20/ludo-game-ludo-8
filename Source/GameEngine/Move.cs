@@ -20,8 +20,9 @@ namespace GameEngine
         // pieceID är det som ska flyttas på Board
         // Detta ska loggas i Moves på något vis
         // Så att man håller koll på positionen av varje Piece
-        public void MovePiece(int pieceID, int diceValue)
+        public void MovePiece(int playerID, int pieceID, int diceValue)
         {
+            PlayerID = playerID;
             PieceID = pieceID;
             DiceValue = diceValue;  
         }

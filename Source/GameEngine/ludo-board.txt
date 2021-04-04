@@ -1,0 +1,18 @@
+﻿12  ►OY  12
+34  O#O  34
+    O#O    
+    O#O    
+ROOO▲#►OOO▼
+O####$####O
+▲OOO◄#▼OOOB
+    O#O    
+    O#O    
+12  O#O  12
+34  GO◄  34
+
+ner = ▼
+upp = ▲
+höger = ►
+vänster = ◄
+
+https://www.alt-codes.net/arrow_alt_codes.php

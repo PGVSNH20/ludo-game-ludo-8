@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace GameEngine
 {
-
-    public enum BoardType { Nest, InPlay, Finish};
-
     public class Board
     {
         public List<Move> Moves { get; set; }
-        public List<Player> PlayerID { get; set; }
+        public List<Player> Players { get; set; }
+
+        public Board()
+        {
+
+        }
     }
 }

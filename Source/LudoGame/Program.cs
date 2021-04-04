@@ -7,15 +7,18 @@ using System.Threading.Tasks;
 
 namespace LudoGame
 {
+
     public class Program
     {
-        public enum Colors { Yellow, Blue, Red, Green };
+
+
+
         public class Game
         {
+
+            public enum Colors { Yellow, Blue, Red, Green };
             public int playerAmount;
             public Player[] players;
-
-
 
             public static void Main(string[] args)
             {
@@ -32,7 +35,7 @@ namespace LudoGame
                         {
                             case 1:
                                 StartGame();
-                               
+
                                 break;
                             case 2:
                                 ResumeGame();
@@ -66,6 +69,7 @@ namespace LudoGame
                 Console.WriteLine("Starting game...");
             }
 
+
             public void SetPlayerAmount()
             {
                 Console.Write("How many players?: ");
@@ -79,37 +83,6 @@ namespace LudoGame
                     }
                 }
             }
-
-            //private void CreatePlayers()
-            //{
-            //    this.players = new Player[this.playerAmount];
-
-            //    for (int i = 0; i < this.playerAmount; i++)
-            //    {
-            //        Console.WriteLine();
-            //        Console.Write("Name of player {0}: ", (i + 1));
-            //        string name = Console.ReadLine();
-            //        string id = ("#" + (i + 1));
-            //        Colors clr = Colors.Red;
-
-            //        switch (i)
-            //        {
-            //            case 0:
-            //                clr = Colors.Red;
-            //                break;
-            //            case 1:
-            //                clr = Colors.Blue;
-            //                break;
-            //            case 2:
-            //                clr = Colors.Yellow;
-            //                break;
-            //            case 3:
-            //                clr = Colors.Green;
-            //                break;
-            //        }
-            //        this.players[i] = new Player(name);
-            //    }
-            //}
 
             public static void ResumeGame()
             {

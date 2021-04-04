@@ -9,7 +9,22 @@ namespace GameEngine
 
     public class Piece
     {
-        public int PieceID { get; set; }
+        public string ID { get; set; }
         public string Color { get; set; }
+        public Position CurrentPosition { get; set; }
+        public Position StartPosition { get; set; }
+        public Position NestPosition { get; set; }
+        public Position EnterFinalTrackPosition { get; set; }
+        public Position EndPosition = new Position(6,6);
+
+        public Piece(string pieceID, string color, Position start, Position nest, Position enter)
+        {
+            ID = pieceID;
+            Color = color;
+            CurrentPosition = nest;
+            StartPosition = start;
+            NestPosition = nest;
+            EnterFinalTrackPosition = enter;
+        }
     }
 }

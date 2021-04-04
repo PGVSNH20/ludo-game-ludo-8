@@ -1,14 +1,14 @@
-﻿12  ►OY  12
+﻿12  ►OG  12
 34  O#O  34
     O#O    
     O#O    
 ROOO▲#►OOO▼
 O####$####O
-▲OOO◄#▼OOOB
+▲OOO◄#▼OOOY
     O#O    
     O#O    
 12  O#O  12
-34  GO◄  34
+34  BO◄  34
 
 ner = ▼
 upp = ▲

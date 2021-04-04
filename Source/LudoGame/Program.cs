@@ -7,16 +7,10 @@ using System.Threading.Tasks;
 
 namespace LudoGame
 {
-
     public class Program
     {
-
-
-
         public class Game
         {
-
-            public enum Colors { Yellow, Blue, Red, Green };
             public int playerAmount;
             public Player[] players;
 
@@ -61,14 +55,15 @@ namespace LudoGame
                 } while (isRunning);
             }
 
-
-
-
             public static void StartGame()
             {
+                var ludoGame = new Board();
+                foreach(var piece in ludoGame.Pieces)
+                {
+                    Console.WriteLine(piece.EndPosition.X + ", " + piece.EndPosition.Y);
+                }
                 Console.WriteLine("Starting game...");
             }
-
 
             public void SetPlayerAmount()
             {

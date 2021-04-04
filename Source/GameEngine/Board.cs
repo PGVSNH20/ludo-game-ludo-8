@@ -10,6 +10,7 @@ namespace GameEngine
     {
         public List<Move> Moves { get; set; }
         public List<Player> Players { get; set; }
+        public List<Piece> Pieces = Setup.Pieces();
 
         public Board()
         {

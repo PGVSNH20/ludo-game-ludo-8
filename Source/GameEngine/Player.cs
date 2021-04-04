@@ -12,14 +12,15 @@ namespace GameEngine
         public string Name { get; set; }
         public string Color { get; set; }
 
-        public Player(string color)
-        {
-            Name = $"{color} Player";
-            Color = color;
-        }
+        //public Player(string color)
+        //{
+        //    Name = $"{color} Player";
+        //    Color = color;
+        //}
 
-        public Player(string name, string color)
+        public Player(int id, string name, string color)
         {
+            ID = id;
             Name = name;
             Color = color;
         }

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace GameEngine
 {
+
+    public enum BoardType { Nest, InPlay, Finish};
+
     public class Board
     {
         public List<Move> Moves { get; set; }

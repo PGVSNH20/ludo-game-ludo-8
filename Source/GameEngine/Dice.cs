@@ -9,13 +9,6 @@ namespace GameEngine
     public class Dice
     {
         public static int Value { get; set; }
-
-        public static int RollDice()
-        {
-            Random rnd = new Random();
-            Value = rnd.Next(1, 7);
-            return Value;
-        }
     }
 }
 

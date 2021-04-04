@@ -60,11 +60,11 @@ namespace GameEngine
                     switch (result)
                     {
                         case 1:
-                            Console.WriteLine("1: Pick a piece to move out of nest");
+                            MoveOutofNest();
                             break;
 
                         case 2:
-                            Console.WriteLine("2: Pick a piece to move");
+                            MovePiece();
                             break;
                     }
 
@@ -75,9 +75,19 @@ namespace GameEngine
                 }
                 Console.Clear();
 
-            } while (isRunning) ;
+            } while (isRunning);
 }
            
+        public static void MoveOutofNest()
+        {
+            Console.WriteLine("1: Pick a piece to move out of nest");
+        }
+
+        public static void MovePiece()
+        {
+            Console.WriteLine("2: Pick a piece to move");
+        }
+
 
             // diceValue ger steg,
             // pieceID är det som ska flyttas på Board

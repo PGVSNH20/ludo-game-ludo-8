@@ -7,15 +7,18 @@ using System.Threading.Tasks;
 
 namespace LudoGame
 {
+
     public class Program
     {
-        public enum Colors { Yellow, Blue, Red, Green };
+
+
+
         public class Game
         {
+
+            public enum Colors { Yellow, Blue, Red, Green };
             public int playerAmount;
             public Player[] players;
-
-
 
             public static void Main(string[] args)
             {
@@ -32,7 +35,7 @@ namespace LudoGame
                         {
                             case 1:
                                 StartGame();
-                               
+
                                 break;
                             case 2:
                                 ResumeGame();
@@ -65,6 +68,7 @@ namespace LudoGame
             {
                 Console.WriteLine("Starting game...");
             }
+
 
             public void SetPlayerAmount()
             {

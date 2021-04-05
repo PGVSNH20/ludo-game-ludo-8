@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace GameEngine
 {
+    public enum Colors { Red, Green, Blue, Yellow };
+
     public class Board
     {
         public List<Move> Moves { get; set; }
-        public List<Player> Players { get; set; }
-        public List<Piece> Pieces = Setup.Pieces();
+        public List<IPlayer> Players { get; set; }
 
         public Board()
         {

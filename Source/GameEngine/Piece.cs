@@ -10,14 +10,15 @@ namespace GameEngine
     public class Piece
     {
         public string ID { get; set; }
-        public string Color { get; set; }
+        public Colors Color { get; set; }
+        public int Moves { get; set; } = 0;
         public Position CurrentPosition { get; set; }
         public Position StartPosition { get; set; }
         public Position NestPosition { get; set; }
         public Position EnterFinalTrackPosition { get; set; }
         public Position EndPosition = new Position(6,6);
 
-        public Piece(string pieceID, string color, Position start, Position nest, Position enter)
+        public Piece(string pieceID, Colors color, Position start, Position nest, Position enter)
         {
             ID = pieceID;
             Color = color;

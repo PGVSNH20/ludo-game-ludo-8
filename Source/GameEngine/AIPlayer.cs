@@ -10,6 +10,7 @@ namespace GameEngine
     {
         public int ID { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string Color { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public Colors Color { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public Piece[] Pieces { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }

@@ -10,7 +10,7 @@ namespace GameEngine
     {
         public static Piece[] Pieces(Colors color)
         {
-            var pieces = new Piece[3];
+            var pieces = new Piece[4];
             if (color == Colors.Red)
             {
                 var RedStartPosition = new Position(1, 5);

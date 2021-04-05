@@ -20,9 +20,8 @@ namespace GameEngine
             Pieces = Setup.Pieces(color);
         }
 
-        public Player(int id, string name, Colors color)
+        public Player(string name, Colors color)
         {
-            ID = id;
             Name = name;
             Color = color;
             Pieces = Setup.Pieces(color);

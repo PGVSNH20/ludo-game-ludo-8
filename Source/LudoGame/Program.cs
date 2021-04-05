@@ -56,12 +56,8 @@ namespace LudoGame
 
             public static void StartGame()
             {
-                var ludoGame = new Board();
-                foreach(var piece in ludoGame.Pieces)
-                {
-                    Console.WriteLine(piece.EndPosition.X + ", " + piece.EndPosition.Y);
-                }
-                Console.WriteLine("Starting game...");
+                var hej = new Player(Colors.Red);
+                Console.WriteLine(hej.Pieces[0].CurrentPosition.X + ", " + hej.Pieces[0].CurrentPosition.Y);
             }
 
             public void SetPlayerAmount()

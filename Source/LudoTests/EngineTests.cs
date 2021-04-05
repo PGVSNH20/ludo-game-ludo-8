@@ -9,7 +9,7 @@ namespace LudoTests
         [TestMethod]
         public void WhenRollingDiceExpectNumberBetween1and6()
         {
-            Assert.IsTrue(LudoLogic.RollDice() >= 1 && LudoLogic.RollDice() <= 6);
+            Assert.IsTrue(Dice.Roll() >= 1 && Dice.Roll() <= 6);
         }
 
 

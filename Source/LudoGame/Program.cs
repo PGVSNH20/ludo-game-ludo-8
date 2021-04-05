@@ -29,7 +29,6 @@ namespace LudoGame
                         {
                             case 1:
                                 StartGame();
-
                                 break;
                             case 2:
                                 ResumeGame();

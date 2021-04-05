@@ -9,7 +9,7 @@ namespace GameEngine
 
     public class Piece
     {
-        public string ID { get; set; }
+        public string PieceID { get; set; }
         public Colors Color { get; set; }
         public int Moves { get; set; } = 0;
         public Position CurrentPosition { get; set; }
@@ -20,7 +20,7 @@ namespace GameEngine
 
         public Piece(string pieceID, Colors color, Position start, Position nest, Position enter)
         {
-            ID = pieceID;
+            PieceID = pieceID;
             Color = color;
             CurrentPosition = nest;
             StartPosition = start;

@@ -8,7 +8,7 @@ namespace GameEngine
 {
     public class Player : IPlayer
     {
-        public int ID { get; set; }
+        public int PlayerID { get; set; }
         public string Name { get; set; }
         public Colors Color { get; set; }
         public Piece[] Pieces { get; set; }

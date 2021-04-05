@@ -56,8 +56,8 @@ namespace LudoGame
 
             public static void StartGame()
             {
-                var hej = new Player(Colors.Red);
-                Console.WriteLine(hej.Pieces[0].CurrentPosition.X + ", " + hej.Pieces[0].CurrentPosition.Y);
+                var RedPlayer = new Player("Maakuuz", Colors.Red);
+                Console.WriteLine(RedPlayer.Name + " plays " + RedPlayer.Pieces[2].ID + " to " + RedPlayer.Pieces[3].CurrentPosition.X + ", " + RedPlayer.Pieces[0].CurrentPosition.Y);
             }
 
             public void SetPlayerAmount()

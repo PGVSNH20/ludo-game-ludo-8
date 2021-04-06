@@ -68,6 +68,7 @@ namespace LudoGame
 
                     if (success)
                     {
+
                         switch (result)
                         {
                             case 1:
@@ -106,7 +107,14 @@ namespace LudoGame
                     Console.Write(player.Pieces[3].CurrentPosition.X);
                     Console.WriteLine(player.Pieces[3].CurrentPosition.Y);
                     Console.WriteLine();
+
+                    //player.Pieces[2].CurrentPosition.X = 5;
+                    //player.Pieces[2].CurrentPosition.Y = 5;
                 }
+
+                Clear();
+                
+                game.PrintLudoBoard();
 
                 Clear();
             }

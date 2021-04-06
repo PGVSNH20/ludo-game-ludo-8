@@ -16,7 +16,7 @@ namespace GameEngine
         public Position StartPosition { get; set; }
         public Position NestPosition { get; set; }
         public Position EnterFinalTrackPosition { get; set; }
-        public Position EndPosition = new Position(6,6);
+        public Position EndPosition = new Position(5,5);
 
         public Piece(string pieceID, Colors color, Position start, Position nest, Position enter)
         {

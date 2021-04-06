@@ -1,29 +1,11 @@
-﻿12  ►OG  12
-34  O#O  34
+﻿    OOO    
     O#O    
     O#O    
-ROOO▲#►OOO▼
+    O#O    
+OOOOO#OOOOO
 O####$####O
-▲OOO◄#▼OOOY
+OOOOO#OOOOO
     O#O    
     O#O    
-12  O#O  12
-34  BO◄  34
-
-ner = ▼
-upp = ▲
-höger = ►
-vänster = ◄
-
-https://www.alt-codes.net/arrow_alt_codes.php
-        O O O
-        O | O
-        O | O
-        O | O
-O O O O O | O O O O O
-O---------$---------O
-O O O O O | O O O O O
-        O | O
-        O | O
-        O | O
-        O O O
+    O#O    
+    OOO    

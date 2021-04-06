@@ -64,10 +64,10 @@ namespace LudoGame
                     Console.Write($"\n{currentColor} Player :\t");
                     var userInput = Console.ReadLine();
                     var success = Int32.TryParse(userInput, out int result);
+                    Console.Clear();
 
                     if (success)
                     {
-                        Console.Clear();
                         switch (result)
                         {
                             case 1:

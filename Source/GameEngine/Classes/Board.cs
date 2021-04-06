@@ -12,5 +12,10 @@ namespace GameEngine
     {
         public List<Move> Moves { get; set; }
         public List<IPlayer> Players { get; set; }
+
+        public Board(List<IPlayer> players)
+        {
+            Players = players;
+        }
     }
 }

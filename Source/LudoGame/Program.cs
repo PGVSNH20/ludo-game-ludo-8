@@ -53,7 +53,6 @@ namespace LudoGame
 
             public static void StartGame()
             {
-                var game = new Board();
                 var players = new List<IPlayer>();
 
                 for (int i=0; i < 4; i++)
@@ -99,7 +98,7 @@ namespace LudoGame
                     Clear();
                 }
 
-                game.Players = players;
+                var game = new Board(players);
                 
                 foreach(var player in game.Players){
                     Console.WriteLine(player.Name);

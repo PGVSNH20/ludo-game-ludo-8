@@ -108,8 +108,8 @@ namespace LudoGame
                     Console.WriteLine(player.Pieces[3].CurrentPosition.Y);
                     Console.WriteLine();
 
-                    //player.Pieces[2].CurrentPosition.X = 5;
-                    //player.Pieces[2].CurrentPosition.Y = 5;
+                    //player.Pieces[2].CurrentPosition.X = player.Pieces[2].StartPosition.X;
+                    //player.Pieces[2].CurrentPosition.Y = player.Pieces[2].StartPosition.Y;
                 }
 
                 Clear();

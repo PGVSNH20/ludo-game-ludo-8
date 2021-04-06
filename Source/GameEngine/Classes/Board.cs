@@ -21,7 +21,7 @@ namespace GameEngine
 
         public void PrintLudoBoard()
         {
-            var allLines = File.ReadAllLines(@"C:\Projects\Ludowreck8\Source\GameEngine\ludo-board.txt");
+            var allLines = File.ReadAllLines(@"..\..\..\ludo-board.txt");
             for(int y = 0; y < allLines.Length; y++)
             {
                 string row = allLines[y];

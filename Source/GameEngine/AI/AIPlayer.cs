@@ -8,9 +8,18 @@ namespace GameEngine
 {
     public class AIPlayer : IPlayer
     {
-        public int PlayerID { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Colors Color { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Piece[] Pieces { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int PlayerID { get; set; }
+        public string Name { get; set; }
+        public Colors Color { get; set; }
+        public Piece[] Pieces { get; set; }
+
+        public AIPlayer(Colors color)
+        {
+            Name = $"{color} AI";
+            Color = color;
+            Pieces = Setup.Pieces(color);
+        }
     }
+
+    
 }

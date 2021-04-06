@@ -13,16 +13,13 @@ namespace GameEngine
         public Colors Color { get; set; }
         public Piece[] Pieces { get; set; }
 
-        public Player(Colors color)
-        {
-            Name = $"{color} Player";
-            Color = color;
-            Pieces = Setup.Pieces(color);
-        }
-
         public Player(string name, Colors color)
         {
-            Name = name;
+            if(name == "")
+                Name = $"{color} Player";
+            else
+                Name = name;
+
             Color = color;
             Pieces = Setup.Pieces(color);
         }

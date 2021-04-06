@@ -16,3 +16,14 @@ höger = ►
 vänster = ◄
 
 https://www.alt-codes.net/arrow_alt_codes.php
+        O O O
+        O | O
+        O | O
+        O | O
+O O O O O | O O O O O
+O---------$---------O
+O O O O O | O O O O O
+        O | O
+        O | O
+        O | O
+        O O O

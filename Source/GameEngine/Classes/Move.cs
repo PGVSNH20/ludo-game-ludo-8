@@ -8,8 +8,15 @@ namespace GameEngine
 {
     public class Move
     {
-        public int PlayerID { get; set; }
-        public string PieceID { get; set; }
+        public IPlayer Player { get; set; }
+        public int PieceID { get; set; }
         public int DiceValue { get; set; }
+
+        public Move(IPlayer player, int pieceId, int diceValue)
+        {
+            Player = player;
+            PieceID = pieceId;
+            DiceValue = diceValue;
+        }
     }
 }

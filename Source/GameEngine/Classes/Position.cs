@@ -16,5 +16,13 @@ namespace GameEngine
             X = x;
             Y = y;
         }
+
+        public bool Compare(Position position)
+        {
+            if (this.X == position.X && this.Y == position.Y)
+                return true;
+
+            else return false;
+        }
     }
 }

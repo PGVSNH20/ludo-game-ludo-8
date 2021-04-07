@@ -54,6 +54,7 @@ namespace LudoGame
             public static void StartGame()
             {
                 var players = new List<IPlayer>();
+                var moves = new List<Move>();
 
                 for (int i=0; i < 4; i++)
                 {
@@ -99,24 +100,7 @@ namespace LudoGame
                     Clear();
                 }
 
-                var game = new Board(players);
-                
-                foreach(var player in game.Players){
-                    Console.WriteLine(player.Name);
-                    Console.WriteLine(player.Pieces[3].Color);
-                    Console.Write(player.Pieces[3].CurrentPosition.X);
-                    Console.WriteLine(player.Pieces[3].CurrentPosition.Y);
-                    Console.WriteLine();
-
-                    //player.Pieces[2].CurrentPosition.X = player.Pieces[2].StartPosition.X;
-                    //player.Pieces[2].CurrentPosition.Y = player.Pieces[2].StartPosition.Y;
-                }
-
-                Clear();
-                
-                game.PrintLudoBoard();
-
-                Clear();
+                RenderGame(players, moves, DateTime.Now);
             }
 
             public static void ResumeGame()
@@ -129,9 +113,63 @@ namespace LudoGame
                 Console.WriteLine("Loading game...");
             }
 
-            public static void RenderGame()
+            public static void RenderGame(List<IPlayer> players, List<Move> moves, DateTime gameStarted)
             {
+                var game = new Board(players, moves, gameStarted);
 
+                //Move move1 = new Move(1, "1", Dice.Roll());
+                //game.MovePiece(move1);
+
+                // foreach move-logik
+
+                bool gameRunning = true;
+                do
+                {
+                    foreach (var player in game.Players)
+                    {
+                        game.PrintLudoBoard();
+                        if(player.GetType() == typeof(Player))
+                        {
+                            Console.WriteLine($"It's {player.Name}({player.Color}) turn. Press any key to roll dice!");
+                            Clear();
+                            Dice.Roll();
+                            bool success = false;
+                            do
+                            {
+                                game.PrintLudoBoard();
+                                Console.Write($"{player.Name} rolled a {Dice.Value}. Which piece do you want to move? ");
+                                var playerInput = Console.ReadLine();
+                                success = Int32.TryParse(playerInput, out int pieceId);
+                                if (success)
+                                {
+                                    switch (pieceId)
+                                    {
+                                        case 1:
+                                            break;
+                                        case 2:
+                                            break;
+                                        case 3:
+                                            break;
+                                        case 4:
+                                            break;
+                                        default:
+                                            success = false;
+                                            break;
+                                    }
+                                }
+                            } while (!success);
+                        }
+
+                        else if (player.GetType() == typeof(AIPlayer))
+                        {
+                            Dice.Roll();
+                        }
+
+                        
+                        if (game.Ended())
+                            gameRunning = false;
+                    }
+                } while (gameRunning);
             }
 
             public static string PrintMenu()

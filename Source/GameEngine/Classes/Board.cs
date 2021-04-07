@@ -13,10 +13,40 @@ namespace GameEngine
     {
         public List<Move> Moves { get; set; }
         public List<IPlayer> Players { get; set; }
+        public DateTime GameStarted { get; set; }
 
-        public Board(List<IPlayer> players)
+        public Board(List<IPlayer> players, List<Move> moves, DateTime gameStarted)
         {
             Players = players;
+            Moves = moves;
+            GameStarted = gameStarted;
+        }
+
+        public bool Ended()
+        {
+            foreach(var player in this.Players)
+            {
+                int piecesInEndPos = 0;
+                for(int i = 0; i < player.Pieces.Count(); i++)
+                {
+                    if (player.Pieces[i].CurrentPosition.Compare(player.Pieces[i].EndPosition))
+                    {
+                        piecesInEndPos++;
+                    }
+                }
+
+                if (piecesInEndPos == 4)
+                    return true;
+            }
+            return false;
+        }
+
+        public void MovePiece(Move move)
+        {
+            for(int remainingMoves = move.DiceValue; remainingMoves > 0; remainingMoves--)
+            {
+                move.Player.Pieces[move.PieceID - 1].TrackMovement();
+            }
         }
 
         public void PrintLudoBoard()

@@ -60,63 +60,62 @@ namespace GameEngine
                 for(int x = 0; x < column.Length ; x++)
                 {
                     bool playerPosition = false;
-
-                    foreach(var player in this.Players)
+                    if (column[x] == '$')
                     {
-                        for(int i = 0; i < player.Pieces.Length; i++)
+                        Console.Write("$ ");
+                    }
+                    else
+                    {
+                        foreach(var player in this.Players)
                         {
-                            if(y == player.Pieces[i].CurrentPosition.Y && x == player.Pieces[i].CurrentPosition.X)
+                            for(int i = 0; i < player.Pieces.Length; i++)
                             {
-                                if (player.Pieces[i].Color == Colors.Red)
+                                if(y == player.Pieces[i].CurrentPosition.Y && x == player.Pieces[i].CurrentPosition.X)
                                 {
-                                    Console.ForegroundColor = ConsoleColor.Red;
-                                }
+                                    if (player.Pieces[i].Color == Colors.Red)
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Red;
+                                    }
 
-                                else if (player.Pieces[i].Color == Colors.Green)
-                                {
-                                    Console.ForegroundColor = ConsoleColor.Green;
-                                }
+                                    else if (player.Pieces[i].Color == Colors.Green)
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Green;
+                                    }
 
-                                else if (player.Pieces[i].Color == Colors.Blue)
-                                {
-                                    Console.ForegroundColor = ConsoleColor.Blue;
-                                }
+                                    else if (player.Pieces[i].Color == Colors.Blue)
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Blue;
+                                    }
 
-                                else if (player.Pieces[i].Color == Colors.Yellow)
-                                {
-                                    Console.ForegroundColor = ConsoleColor.DarkYellow;
-                                }
+                                    else if (player.Pieces[i].Color == Colors.Yellow)
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                                    }
 
-                                Console.Write(player.Pieces[i].ID + " ");
-                                playerPosition = true;
-                                Console.ForegroundColor = ConsoleColor.White;
+                                    Console.Write(player.Pieces[i].ID + " ");
+                                    playerPosition = true;
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                }
+                            }
+                        }
+                        if (!playerPosition)
+                        {
+                            if (column[x] == ' ')
+                            {
+                                Console.Write("  ");
+                            }
+
+                            else if (column[x] == 'O')
+                            {
+                                Console.Write("O ");
+                            }
+
+                            else if (column[x] == '#')
+                            {
+                                Console.Write("# ");
                             }
                         }
                     }
-
-                    if (!playerPosition)
-                    {
-                        if (column[x] == ' ')
-                        {
-                            Console.Write("  ");
-                        }
-
-                        else if (column[x] == 'O')
-                        {
-                            Console.Write("O ");
-                        }
-
-                        else if (column[x] == '#')
-                        {
-                            Console.Write("# ");
-                        }
-
-                        else if (column[x] == '$')
-                        {
-                            Console.Write("$ ");
-                        }
-                    }
-                    
                 }
                 Console.WriteLine();
             }

@@ -32,6 +32,12 @@ namespace GameEngine
 
         public void TrackMovement()
         {
+            if (this.CurrentPosition.Compare(this.EndPosition))
+            {
+                this.MoveDirectionX = 0;
+                this.MoveDirectionY = 0;
+            }
+
             if (this.CurrentPosition.Compare(this.EnterFinalTrackPosition))
             {
                 if(this.MoveDirectionX == 1)

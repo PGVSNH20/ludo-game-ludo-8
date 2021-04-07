@@ -84,7 +84,7 @@ namespace GameEngine
 
                                 else if (player.Pieces[i].Color == Colors.Yellow)
                                 {
-                                    Console.ForegroundColor = ConsoleColor.Yellow;
+                                    Console.ForegroundColor = ConsoleColor.DarkYellow;
                                 }
 
                                 Console.Write(player.Pieces[i].ID + " ");

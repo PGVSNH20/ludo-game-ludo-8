@@ -123,11 +123,17 @@ namespace LudoGame
                 // foreach move-logik
 
                 bool gameRunning = true;
+                foreach (var player in game.Players)
+                {
+                    player.Pieces[1].CurrentPosition = player.Pieces[1].StartPosition;
+                }
+
                 do
                 {
                     foreach (var player in game.Players)
                     {
                         game.PrintLudoBoard();
+                        int pieceId = 1;
                         if(player.GetType() == typeof(Player))
                         {
                             Console.WriteLine($"It's {player.Name}({player.Color}) turn. Press any key to roll dice!");
@@ -139,7 +145,7 @@ namespace LudoGame
                                 game.PrintLudoBoard();
                                 Console.Write($"{player.Name} rolled a {Dice.Value}. Which piece do you want to move? ");
                                 var playerInput = Console.ReadLine();
-                                success = Int32.TryParse(playerInput, out int pieceId);
+                                success = Int32.TryParse(playerInput, out pieceId);
                                 if (success)
                                 {
                                     switch (pieceId)
@@ -153,21 +159,32 @@ namespace LudoGame
                                         case 4:
                                             break;
                                         default:
+                                            Console.WriteLine("Wrong piece value.");
                                             success = false;
                                             break;
                                     }
                                 }
+                                else
+                                    Console.WriteLine("Couldn't parse piece value.");
+
+                                Clear();
                             } while (!success);
                         }
 
                         else if (player.GetType() == typeof(AIPlayer))
                         {
                             Dice.Roll();
+                            Random rnd = new Random();
+                            pieceId = rnd.Next(1, 5);
                         }
 
+                        Move currentMove = new Move(player, pieceId, Dice.Value);
+                        game.MovePiece(currentMove);
                         
                         if (game.Ended())
                             gameRunning = false;
+
+                        Console.Clear();
                     }
                 } while (gameRunning);
             }

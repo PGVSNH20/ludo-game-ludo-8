@@ -123,22 +123,7 @@ namespace LudoGame
                 // foreach move-logik
 
                 bool gameRunning = true;
-                foreach (var player in game.Players)
-                {
-                    // player.Pieces[1].CurrentPosition = player.Pieces[1].StartPosition;
-                    // player.Pieces[2].CurrentPosition = player.Pieces[2].StartPosition;
-                    // player.Pieces[3].CurrentPosition = player.Pieces[3].EnterFinalTrackPosition;
-                    
-                    Console.WriteLine(player.Pieces[2].StartPosition.X + ", " + player.Pieces[2].StartPosition.Y);
-                }
-                foreach (var player in game.Players)
-                {
-                    // player.Pieces[1].CurrentPosition = player.Pieces[1].StartPosition;
-                    // player.Pieces[2].CurrentPosition = player.Pieces[2].StartPosition;
-                    // player.Pieces[3].CurrentPosition = player.Pieces[3].EnterFinalTrackPosition;
-
-                    Console.WriteLine(player.Pieces[2].StartPosition.X + ", " + player.Pieces[2].StartPosition.Y);
-                }
+                
                 Clear();
 
                 do
@@ -193,18 +178,20 @@ namespace LudoGame
 
                         Move currentMove = new Move(player, pieceId, Dice.Value);
                         game.MovePiece(currentMove);
-                        
+
+                        Console.WriteLine(player.Pieces[1].NestPosition.X + ", " + player.Pieces[1].NestPosition.Y);
+                        Console.WriteLine(player.Pieces[1].CurrentPosition.X + ", " + player.Pieces[1].CurrentPosition.Y);
+
                         if (game.Ended())
                             gameRunning = false;
-
-                        Console.WriteLine("1. " + player.Pieces[0].CurrentPosition.X + ", " + player.Pieces[0].CurrentPosition.Y);
-                        Console.WriteLine("2. " + player.Pieces[1].CurrentPosition.X + ", " + player.Pieces[1].CurrentPosition.Y);
-                        Console.WriteLine("3. " + player.Pieces[2].CurrentPosition.X + ", " + player.Pieces[2].CurrentPosition.Y);
-                        Console.WriteLine("4. " + player.Pieces[3].CurrentPosition.X + ", " + player.Pieces[3].CurrentPosition.Y);
 
                         Clear();
                     }
                 } while (gameRunning);
+
+                game.PrintLudoBoard();
+                Console.WriteLine("You won!");
+                Clear();
             }
 
             public static string PrintMenu()

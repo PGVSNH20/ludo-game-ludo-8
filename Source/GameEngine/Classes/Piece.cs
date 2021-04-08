@@ -21,11 +21,11 @@ namespace GameEngine
         public int MoveDirectionX { get; set; } = 0;
         public int MoveDirectionY { get; set; } = 0;
 
-        public Piece(int pieceID, Colors color, Position start, Position sixth, Position nest, Position enter)
+        public Piece(int pieceID, Colors color, Position current, Position start, Position sixth, Position nest, Position enter)
         {
             ID = pieceID;
             Color = color;
-            CurrentPosition = nest;
+            CurrentPosition = current;
             StartPosition = start;
             SixthPosition = sixth;
             NestPosition = nest;

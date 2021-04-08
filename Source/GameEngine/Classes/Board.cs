@@ -46,7 +46,7 @@ namespace GameEngine
             for(int remainingMoves = move.DiceValue; remainingMoves > 0; remainingMoves--)
             {
                 int id = move.PieceID - 1;
-                if(move.Player.Pieces[id].CurrentPosition.Compare(move.Player.Pieces[id].NestPosition) && Dice.Value == 1 || Dice.Value == 6)
+                if(move.Player.Pieces[id].CurrentPosition.Compare(move.Player.Pieces[id].NestPosition) && Dice.Value == 1 || move.Player.Pieces[id].CurrentPosition.Compare(move.Player.Pieces[id].NestPosition) && Dice.Value == 6)
                 {
                     move.Player.Pieces[id].MoveOut();
                     remainingMoves = 0;
@@ -122,12 +122,62 @@ namespace GameEngine
 
                             else if (column[x] == 'O')
                             {
+                                foreach(var player in this.Players)
+                                {
+                                    if (player.Pieces[0].StartPosition.Compare(new Position(x, y)) || player.Pieces[0].SixthPosition.Compare(new Position(x, y)))
+                                    {
+                                        if (player.Color == Colors.Red)
+                                            Console.ForegroundColor = ConsoleColor.Red;
+                                        else if (player.Color == Colors.Green)
+                                            Console.ForegroundColor = ConsoleColor.Green;
+                                        else if (player.Color == Colors.Yellow)
+                                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                                        else if (player.Color == Colors.Blue)
+                                            Console.ForegroundColor = ConsoleColor.Blue;
+                                    }
+                                }
                                 Console.Write("O ");
+                                Console.ForegroundColor = ConsoleColor.White;
                             }
 
                             else if (column[x] == '#')
                             {
+                                foreach(var player in this.Players)
+                                {
+                                    if (player.Color == Colors.Red)
+                                    {
+                                        if (player.Pieces[0].EnterFinalTrackPosition.X < x && x < player.Pieces[0].EndPosition.X)
+                                        {
+                                            Console.ForegroundColor = ConsoleColor.Red;
+                                        }
+                                    }
+
+                                    else if (player.Color == Colors.Green)
+                                    {
+                                        if (player.Pieces[0].EnterFinalTrackPosition.Y < y && y < player.Pieces[0].EndPosition.Y)
+                                        {
+                                            Console.ForegroundColor = ConsoleColor.Green;
+                                        }
+                                    }
+
+                                    else if (player.Color == Colors.Yellow)
+                                    {
+                                        if (player.Pieces[0].EnterFinalTrackPosition.X > x && x > player.Pieces[0].EndPosition.X)
+                                        {
+                                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                                        }
+                                    }
+
+                                    else if (player.Color == Colors.Blue)
+                                    {
+                                        if (player.Pieces[0].EnterFinalTrackPosition.Y > y && y > player.Pieces[0].EndPosition.Y)
+                                        {
+                                            Console.ForegroundColor = ConsoleColor.Blue;
+                                        }
+                                    }
+                                }
                                 Console.Write("# ");
+                                Console.ForegroundColor = ConsoleColor.White;
                             }
                         }
                     }

@@ -57,7 +57,7 @@ namespace LudoGame
                 var players = new List<IPlayer>();
                 var moves = new List<Move>();
 
-                for (int i=0; i < 4; i++)
+                for (int i = 0; i < 4; i++)
                 {
                     var currentColor = Enum.GetName(typeof(Colors), i);
                     Colors colorType = (Colors)Enum.Parse(typeof(Colors), currentColor);
@@ -131,7 +131,7 @@ namespace LudoGame
                     {
                         game.PrintLudoBoard();
                         int pieceId = 1;
-                        if(player.GetType() == typeof(Player))
+                        if (player.GetType() == typeof(Player))
                         {
                             Console.WriteLine($"It's {player.Name} turn. Press any key to roll dice!");
                             Clear();
@@ -141,29 +141,46 @@ namespace LudoGame
                             {
                                 game.PrintLudoBoard();
                                 Console.Write($"{player.Name} rolled a {Dice.Value}.");
-                                Console.Write($" Which piece do you want to move? ");
-                                var playerInput = Console.ReadLine();
-                                success = Int32.TryParse(playerInput, out pieceId);
-                                if (success)
+
+                                if (!player.Pieces[0].AbleToMakeMove() && !player.Pieces[1].AbleToMakeMove() && !player.Pieces[2].AbleToMakeMove() && !player.Pieces[3].AbleToMakeMove())
                                 {
-                                    switch (pieceId)
-                                    {
-                                        case 1:
-                                            break;
-                                        case 2:
-                                            break;
-                                        case 3:
-                                            break;
-                                        case 4:
-                                            break;
-                                        default:
-                                            Console.WriteLine("Wrong piece value.");
-                                            success = false;
-                                            break;
-                                    }
+                                    Console.WriteLine("You can't move any piece.");
+                                    success = true;
                                 }
+
                                 else
-                                    Console.WriteLine("Couldn't parse piece value.");
+                                {
+                                    Console.Write($" Which piece do you want to move? ");
+                                    var playerInput = Console.ReadLine();
+                                    success = Int32.TryParse(playerInput, out pieceId);
+
+                                    if (success)
+                                    {
+                                        switch (pieceId)
+                                        {
+                                            case 1:
+                                            case 2:
+                                            case 3:
+                                            case 4:
+                                                if(player.Pieces[pieceId - 1].AbleToMakeMove())
+                                                {
+                                                    success = true;
+                                                }
+                                                else
+                                                {
+                                                    success = false;
+                                                    Console.WriteLine("You're not able to move this piece. Try again...");
+                                                }
+                                                break;
+                                            default:
+                                                Console.WriteLine("Wrong piece value. Try again...");
+                                                success = false;
+                                                break;
+                                        }
+                                    }
+                                    else
+                                        Console.WriteLine("Couldn't parse piece value. Try again...");
+                                }
 
                                 Clear();
                             } while (!success);

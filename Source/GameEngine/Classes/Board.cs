@@ -25,10 +25,10 @@ namespace GameEngine
 
         public bool Ended()
         {
-            foreach(var player in this.Players)
+            foreach (var player in this.Players)
             {
                 int piecesInEndPos = 0;
-                for(int i = 0; i < player.Pieces.Count(); i++)
+                for (int i = 0; i < player.Pieces.Count(); i++)
                 {
                     if (player.Pieces[i].CurrentPosition.Compare(player.Pieces[i].EndPosition))
                     {
@@ -45,18 +45,20 @@ namespace GameEngine
         public void MovePiece(Move move)
         {
             var id = move.PieceID - 1;
-            for(int remainingMoves = move.DiceValue; remainingMoves > 0; remainingMoves--)
+            for (int remainingMoves = move.DiceValue; remainingMoves > 0; remainingMoves--)
             {
-                if(move.Player.Pieces[id].CurrentPosition.Compare(move.Player.Pieces[id].NestPosition) && Dice.Value == 1 || move.Player.Pieces[id].CurrentPosition.Compare(move.Player.Pieces[id].NestPosition) && Dice.Value == 6)
+                if (move.Player.Pieces[id].CurrentPosition.Compare(move.Player.Pieces[id].NestPosition) && Dice.Value == 1 || move.Player.Pieces[id].CurrentPosition.Compare(move.Player.Pieces[id].NestPosition) && Dice.Value == 6)
                 {
                     move.Player.Pieces[id].MoveOut();
                     remainingMoves = 0;
                 }
                 else
                 {
+                    move.Player.Pieces[id].Moves++;
                     move.Player.Pieces[id].TrackMovement();
                 }
             }
+
             if (move.Player.Pieces[id].PushOpponent(this.Players))
             {
                 Console.WriteLine($"{move.Player.Name} pushed opponent into their nest!");
@@ -66,12 +68,12 @@ namespace GameEngine
         public void PrintLudoBoard()
         {
             var allLines = File.ReadAllLines(@"..\..\..\ludo-board.txt");
-            for(int y = 0; y < allLines.Length; y++)
+            for (int y = 0; y < allLines.Length; y++)
             {
                 string row = allLines[y];
                 char[] column = row.ToCharArray();
-                
-                for(int x = 0; x < column.Length ; x++)
+
+                for (int x = 0; x < column.Length; x++)
                 {
                     int piecesOnSpot = 0;
                     bool playerPosition = false;
@@ -81,13 +83,13 @@ namespace GameEngine
                     }
                     else
                     {
-                        foreach(var player in this.Players)
-                        {   
-                            for(int i = 0; i < player.Pieces.Length; i++)
+                        foreach (var player in this.Players)
+                        {
+                            for (int i = 0; i < player.Pieces.Length; i++)
                             {
-                                if(piecesOnSpot == 0)
+                                if (piecesOnSpot == 0)
                                 {
-                                    if(y == player.Pieces[i].CurrentPosition.Y && x == player.Pieces[i].CurrentPosition.X)
+                                    if (y == player.Pieces[i].CurrentPosition.Y && x == player.Pieces[i].CurrentPosition.X)
                                     {
                                         if (player.Pieces[i].Color == Colors.Red)
                                         {
@@ -117,7 +119,7 @@ namespace GameEngine
                                 }
                             }
                         }
-                        
+
                         if (!playerPosition)
                         {
                             if (column[x] == ' ')
@@ -129,7 +131,7 @@ namespace GameEngine
                             {
                                 foreach (var player in this.Players)
                                 {
-                                    for(int i = 0; i < player.Pieces.Length; i++)
+                                    for (int i = 0; i < player.Pieces.Length; i++)
                                     {
                                         if (player.Pieces[i].NestPosition.Compare(new Position(x, y)))
                                         {
@@ -142,7 +144,7 @@ namespace GameEngine
                                             else if (player.Color == Colors.Blue)
                                                 Console.ForegroundColor = ConsoleColor.Blue;
                                         }
-                                    }  
+                                    }
                                 }
                                 Console.Write("x ");
                                 Console.ForegroundColor = ConsoleColor.White;
@@ -150,7 +152,7 @@ namespace GameEngine
 
                             else if (column[x] == 'O')
                             {
-                                foreach(var player in this.Players)
+                                foreach (var player in this.Players)
                                 {
                                     if (player.Pieces[0].StartPosition.Compare(new Position(x, y)) || player.Pieces[0].SixthPosition.Compare(new Position(x, y)))
                                     {
@@ -170,7 +172,7 @@ namespace GameEngine
 
                             else if (column[x] == '#')
                             {
-                                foreach(var player in this.Players)
+                                foreach (var player in this.Players)
                                 {
                                     if (player.Color == Colors.Red)
                                     {

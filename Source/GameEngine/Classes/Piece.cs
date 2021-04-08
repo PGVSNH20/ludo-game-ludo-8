@@ -32,18 +32,37 @@ namespace GameEngine
             EnterFinalTrackPosition = enter;
         }
 
+        public bool AbleToMakeMove()
+        {
+            if(Dice.Value != 1 && Dice.Value != 6)
+            {
+                if (this.CurrentPosition.Compare(this.NestPosition))
+                {
+                    return false;
+                }
+            }
+
+            if(this.Moves+Dice.Value > 45)
+            {
+                return false;
+            }
+            return true;
+        }
+
         public void MoveOut()
         {
             if (Dice.Value == 1)
             {
                 this.CurrentPosition.X = this.StartPosition.X;
                 this.CurrentPosition.Y = this.StartPosition.Y;
+                this.Moves = 1;
             }
             
             else if (Dice.Value == 6)
             {
                 this.CurrentPosition.X = this.SixthPosition.X;
                 this.CurrentPosition.Y = this.SixthPosition.Y;
+                this.Moves = 6;
             }
         }
 
@@ -59,6 +78,7 @@ namespace GameEngine
                         {
                             player.Pieces[i].CurrentPosition.X = player.Pieces[i].NestPosition.X;
                             player.Pieces[i].CurrentPosition.Y = player.Pieces[i].NestPosition.Y;
+                            player.Pieces[i].Moves = 0;
                             return true;
                         }
                     }

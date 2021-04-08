@@ -11,6 +11,7 @@ namespace GameEngine
 
     public class Board
     {
+        public int BoardID { get; set; }
         public List<Move> Moves { get; set; }
         public List<IPlayer> Players { get; set; }
         public DateTime GameStarted { get; set; }
@@ -43,9 +44,9 @@ namespace GameEngine
 
         public void MovePiece(Move move)
         {
+            var id = move.PieceID - 1;
             for(int remainingMoves = move.DiceValue; remainingMoves > 0; remainingMoves--)
             {
-                int id = move.PieceID - 1;
                 if(move.Player.Pieces[id].CurrentPosition.Compare(move.Player.Pieces[id].NestPosition) && Dice.Value == 1 || move.Player.Pieces[id].CurrentPosition.Compare(move.Player.Pieces[id].NestPosition) && Dice.Value == 6)
                 {
                     move.Player.Pieces[id].MoveOut();
@@ -55,6 +56,10 @@ namespace GameEngine
                 {
                     move.Player.Pieces[id].TrackMovement();
                 }
+            }
+            if (move.Player.Pieces[id].PushOpponent(this.Players))
+            {
+                Console.WriteLine($"{move.Player.Name} pushed opponent into their nest!");
             }
         }
 

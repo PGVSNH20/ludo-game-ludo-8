@@ -176,7 +176,7 @@ namespace LudoGame
                             Console.Clear();
                             Dice.Roll();
                             game.PrintLudoBoard();
-                            Console.Write($"{player.Name} rolled a {Dice.Value}. Choosing which piece to move ");
+                            Console.WriteLine($"{player.Name} rolled a {Dice.Value}. Choosing which piece to move ");
                             player.Thinking();
                             var rnd = new Random();
                             pieceId = rnd.Next(1, 5);
@@ -189,7 +189,7 @@ namespace LudoGame
                         if (game.Ended())
                             gameRunning = false;
 
-                        Console.Clear();
+                        Clear();
                     }
                 } while (gameRunning);
 

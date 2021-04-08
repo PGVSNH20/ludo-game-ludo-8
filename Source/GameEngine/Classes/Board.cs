@@ -120,6 +120,29 @@ namespace GameEngine
                                 Console.Write("  ");
                             }
 
+                            else if (column[x] == 'X')
+                            {
+                                foreach (var player in this.Players)
+                                {
+                                    for(int i = 0; i < player.Pieces.Length; i++)
+                                    {
+                                        if (player.Pieces[i].NestPosition.Compare(new Position(x, y)))
+                                        {
+                                            if (player.Color == Colors.Red)
+                                                Console.ForegroundColor = ConsoleColor.Red;
+                                            else if (player.Color == Colors.Green)
+                                                Console.ForegroundColor = ConsoleColor.Green;
+                                            else if (player.Color == Colors.Yellow)
+                                                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                                            else if (player.Color == Colors.Blue)
+                                                Console.ForegroundColor = ConsoleColor.Blue;
+                                        }
+                                    }  
+                                }
+                                Console.Write("x ");
+                                Console.ForegroundColor = ConsoleColor.White;
+                            }
+
                             else if (column[x] == 'O')
                             {
                                 foreach(var player in this.Players)
@@ -184,6 +207,7 @@ namespace GameEngine
                 }
                 Console.WriteLine();
             }
+            Console.WriteLine();
         }
     }
 }

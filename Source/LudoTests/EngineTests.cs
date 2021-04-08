@@ -12,19 +12,13 @@ namespace LudoTests
             Assert.IsTrue(Dice.Roll() >= 1 && Dice.Roll() <= 6);
         }
 
-
         [TestMethod]
-        public void WhenSettingAmountOfPlayersExpectNumberBetween2and4()
+        public void WhenComparingCoordinatesExpectTrue()
         {
-            //Arrange
-            
+            Position TestPosition = new Position(10, 10);
 
-
-            //Act
-
-
-        //Assert
-    }
+            Assert.IsTrue(TestPosition.Compare(new Position(10, 10)));
+        }
     }
 }
 

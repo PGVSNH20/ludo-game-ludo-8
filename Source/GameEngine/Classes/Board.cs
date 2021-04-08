@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GameEngine
 {
-    public enum Colors { Red, Green, Blue, Yellow };
+    public enum Colors { Red, Green, Yellow, Blue };
 
     public class Board
     {
@@ -45,7 +45,16 @@ namespace GameEngine
         {
             for(int remainingMoves = move.DiceValue; remainingMoves > 0; remainingMoves--)
             {
-                move.Player.Pieces[move.PieceID - 1].TrackMovement();
+                int id = move.PieceID - 1;
+                if(move.Player.Pieces[id].CurrentPosition.Compare(move.Player.Pieces[id].NestPosition) && Dice.Value == 1 || Dice.Value == 6)
+                {
+                    move.Player.Pieces[id].MoveOut();
+                    remainingMoves = 0;
+                }
+                else
+                {
+                    move.Player.Pieces[id].TrackMovement();
+                }
             }
         }
 
@@ -56,9 +65,10 @@ namespace GameEngine
             {
                 string row = allLines[y];
                 char[] column = row.ToCharArray();
-
+                
                 for(int x = 0; x < column.Length ; x++)
                 {
+                    int piecesOnSpot = 0;
                     bool playerPosition = false;
                     if (column[x] == '$')
                     {
@@ -67,37 +77,42 @@ namespace GameEngine
                     else
                     {
                         foreach(var player in this.Players)
-                        {
+                        {   
                             for(int i = 0; i < player.Pieces.Length; i++)
                             {
-                                if(y == player.Pieces[i].CurrentPosition.Y && x == player.Pieces[i].CurrentPosition.X)
+                                if(piecesOnSpot == 0)
                                 {
-                                    if (player.Pieces[i].Color == Colors.Red)
+                                    if(y == player.Pieces[i].CurrentPosition.Y && x == player.Pieces[i].CurrentPosition.X)
                                     {
-                                        Console.ForegroundColor = ConsoleColor.Red;
-                                    }
+                                        if (player.Pieces[i].Color == Colors.Red)
+                                        {
+                                            Console.ForegroundColor = ConsoleColor.Red;
+                                        }
 
-                                    else if (player.Pieces[i].Color == Colors.Green)
-                                    {
-                                        Console.ForegroundColor = ConsoleColor.Green;
-                                    }
+                                        else if (player.Pieces[i].Color == Colors.Green)
+                                        {
+                                            Console.ForegroundColor = ConsoleColor.Green;
+                                        }
 
-                                    else if (player.Pieces[i].Color == Colors.Blue)
-                                    {
-                                        Console.ForegroundColor = ConsoleColor.Blue;
-                                    }
+                                        else if (player.Pieces[i].Color == Colors.Yellow)
+                                        {
+                                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                                        }
 
-                                    else if (player.Pieces[i].Color == Colors.Yellow)
-                                    {
-                                        Console.ForegroundColor = ConsoleColor.DarkYellow;
-                                    }
+                                        else if (player.Pieces[i].Color == Colors.Blue)
+                                        {
+                                            Console.ForegroundColor = ConsoleColor.Blue;
+                                        }
 
-                                    Console.Write(player.Pieces[i].ID + " ");
-                                    playerPosition = true;
-                                    Console.ForegroundColor = ConsoleColor.White;
+                                        Console.Write(player.Pieces[i].ID + " ");
+                                        playerPosition = true;
+                                        piecesOnSpot++;
+                                        Console.ForegroundColor = ConsoleColor.White;
+                                    }
                                 }
                             }
                         }
+                        
                         if (!playerPosition)
                         {
                             if (column[x] == ' ')

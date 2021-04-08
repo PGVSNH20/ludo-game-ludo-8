@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace LudoGame
@@ -123,8 +124,6 @@ namespace LudoGame
                 // foreach move-logik
 
                 bool gameRunning = true;
-                
-                Clear();
 
                 do
                 {
@@ -134,14 +133,15 @@ namespace LudoGame
                         int pieceId = 1;
                         if(player.GetType() == typeof(Player))
                         {
-                            Console.WriteLine($"It's {player.Name}({player.Color}) turn. Press any key to roll dice!");
+                            Console.WriteLine($"It's {player.Name} turn. Press any key to roll dice!");
                             Clear();
                             Dice.Roll();
                             bool success = false;
                             do
                             {
                                 game.PrintLudoBoard();
-                                Console.Write($"{player.Name} rolled a {Dice.Value}. Which piece do you want to move? ");
+                                Console.Write($"{player.Name} rolled a {Dice.Value}.");
+                                Console.Write($" Which piece do you want to move? ");
                                 var playerInput = Console.ReadLine();
                                 success = Int32.TryParse(playerInput, out pieceId);
                                 if (success)
@@ -171,21 +171,25 @@ namespace LudoGame
 
                         else if (player.GetType() == typeof(AIPlayer))
                         {
+                            Console.WriteLine($"It's {player.Name} turn. Rolling the dice");
+                            player.Thinking();
+                            Console.Clear();
                             Dice.Roll();
-                            Random rnd = new Random();
+                            game.PrintLudoBoard();
+                            Console.Write($"{player.Name} rolled a {Dice.Value}. Choosing which piece to move ");
+                            player.Thinking();
+                            var rnd = new Random();
                             pieceId = rnd.Next(1, 5);
                         }
 
                         Move currentMove = new Move(player, pieceId, Dice.Value);
                         game.MovePiece(currentMove);
-
-                        Console.WriteLine(player.Pieces[1].NestPosition.X + ", " + player.Pieces[1].NestPosition.Y);
-                        Console.WriteLine(player.Pieces[1].CurrentPosition.X + ", " + player.Pieces[1].CurrentPosition.Y);
+                        game.Moves.Add(currentMove);
 
                         if (game.Ended())
                             gameRunning = false;
 
-                        Clear();
+                        Console.Clear();
                     }
                 } while (gameRunning);
 

@@ -12,5 +12,6 @@ namespace GameEngine
         public string Name { get; set; }
         public Colors Color { get; set; }
         public Piece[] Pieces { get; set; }
+        public void Thinking();
     }
 }

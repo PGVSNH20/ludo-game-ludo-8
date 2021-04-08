@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace GameEngine
@@ -18,6 +19,13 @@ namespace GameEngine
             Name = $"{color} AI";
             Color = color;
             Pieces = Setup.Pieces(color);
+        }
+
+        public void Thinking()
+        {
+            Random rnd = new Random();
+            int thinking = rnd.Next(50, 1000);
+            Thread.Sleep(thinking);
         }
     }
 

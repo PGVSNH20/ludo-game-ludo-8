@@ -23,5 +23,10 @@ namespace GameEngine
             Color = color;
             Pieces = Setup.Pieces(color);
         }
+
+        public void Thinking()
+        {
+            throw new NotImplementedException(); // You can think for yourself...
+        }
     }
 }

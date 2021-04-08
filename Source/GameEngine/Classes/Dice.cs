@@ -16,6 +16,23 @@ namespace GameEngine
             Dice.Value = rnd.Next(1, 7);
             return Dice.Value;
         }
+        public static int Roll(int value)
+        {
+            if(value < 1)
+            {
+                Dice.Value = 1;
+            }
+            else if (value > 6)
+            {
+                Dice.Value = 6;
+            }
+            else
+            {
+                Dice.Value = value;
+            }
+            
+            return Dice.Value;
+        }
     }
 }
 

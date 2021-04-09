@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameEngine.Database
+namespace LudoGame.Database
 {
     public class DbFunctions
     {
-        ApplicationDbContext context = new ApplicationDbContext();
+        LudoDbContext context = new LudoDbContext();
 
 
         public void SaveGame(Board BoardID, List<Move> Moves, List<IPlayer> Players, DateTime GameStarted)

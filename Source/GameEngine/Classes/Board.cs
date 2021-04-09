@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameEngine
+namespace LudoGame
 {
     public enum Colors { Red, Green, Yellow, Blue };
 
     public class Board
     {
-        public int BoardID { get; set; }
-        public List<Move> Moves { get; set; }
-        public List<IPlayer> Players { get; set; }
-        public DateTime GameStarted { get; set; }
-        public DateTime? GameEnded { get; set; }
+
+        public Board()
+        {
+
+        }
 
         public Board(List<IPlayer> players, List<Move> moves, DateTime gameStarted)
         {
@@ -23,6 +24,13 @@ namespace GameEngine
             Moves = moves;
             GameStarted = gameStarted;
         }
+
+        public int ID { get; set; }
+        public List<Move> Moves { get; set; }
+        [NotMapped]
+        public List<IPlayer> Players { get; set; }
+        public DateTime GameStarted { get; set; }
+        public DateTime? GameEnded { get; set; }
 
         public bool Ended()
         {

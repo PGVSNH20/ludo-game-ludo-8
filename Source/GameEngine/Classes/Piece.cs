@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameEngine
+namespace LudoGame
 {
 
     public class Piece
@@ -21,6 +21,10 @@ namespace GameEngine
         public int MoveDirectionX { get; set; } = 0;
         public int MoveDirectionY { get; set; } = 0;
 
+        public Piece()
+        {
+
+        }
         public Piece(int pieceID, Colors color, Position current, Position start, Position sixth, Position nest, Position enter)
         {
             ID = pieceID;

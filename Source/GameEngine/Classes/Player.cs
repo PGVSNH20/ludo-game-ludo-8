@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameEngine
+namespace LudoGame
 {
     public class Player : IPlayer
     {
-        public int PlayerID { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
         public Colors Color { get; set; }
         public Piece[] Pieces { get; set; }

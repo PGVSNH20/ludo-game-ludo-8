@@ -1,4 +1,4 @@
-using GameEngine;
+using LudoGame;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace LudoTests

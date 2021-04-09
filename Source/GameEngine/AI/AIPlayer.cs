@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace GameEngine
+namespace LudoGame
 {
     public class AIPlayer : IPlayer
     {
-        public int PlayerID { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
         public Colors Color { get; set; }
         public Piece[] Pieces { get; set; }

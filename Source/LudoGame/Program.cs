@@ -131,6 +131,7 @@ namespace LudoGame
                     {
                         game.PrintLudoBoard();
                         int pieceId = 1;
+
                         if (player.GetType() == typeof(Player))
                         {
                             Console.WriteLine($"It's {player.Name} turn. Press any key to roll dice!");
@@ -193,10 +194,28 @@ namespace LudoGame
                             Console.Clear();
                             Dice.Roll();
                             game.PrintLudoBoard();
-                            Console.WriteLine($"{player.Name} rolled a {Dice.Value}. Choosing which piece to move ");
-                            player.Thinking();
-                            var rnd = new Random();
-                            pieceId = rnd.Next(1, 5);
+                            if (!player.Pieces[0].AbleToMakeMove() && !player.Pieces[1].AbleToMakeMove() && !player.Pieces[2].AbleToMakeMove() && !player.Pieces[3].AbleToMakeMove())
+                            {
+                                Console.WriteLine($"{player.Name} can't move any piece.");
+                            }
+                            else
+                            {
+                                Console.WriteLine($"{player.Name} rolled a {Dice.Value}. Choosing which piece to move ");
+                                player.Thinking();
+                                var rnd = new Random();
+                                pieceId = rnd.Next(1, 5);
+
+                                if (!player.Pieces[pieceId - 1].AbleToMakeMove())
+                                {
+                                    for(int i = 0; i < player.Pieces.Length; i++)
+                                    {
+                                        if (player.Pieces[i].AbleToMakeMove())
+                                        {
+                                            pieceId = i + 1;
+                                        }
+                                    }
+                                }
+                            }
                         }
 
                         Move currentMove = new Move(player, pieceId, Dice.Value);
@@ -206,7 +225,7 @@ namespace LudoGame
                         if (game.Ended())
                             gameRunning = false;
 
-                        Clear();
+                        Console.Clear();
                     }
                 } while (gameRunning);
 

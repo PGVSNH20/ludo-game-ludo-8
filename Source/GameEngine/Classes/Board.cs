@@ -15,6 +15,7 @@ namespace GameEngine
         public List<Move> Moves { get; set; }
         public List<IPlayer> Players { get; set; }
         public DateTime GameStarted { get; set; }
+        public DateTime? GameEnded { get; set; }
 
         public Board(List<IPlayer> players, List<Move> moves, DateTime gameStarted)
         {
@@ -37,7 +38,10 @@ namespace GameEngine
                 }
 
                 if (piecesInEndPos == 4)
+                {
+                    this.GameEnded = DateTime.Now;
                     return true;
+                }
             }
             return false;
         }
@@ -62,6 +66,8 @@ namespace GameEngine
             if (move.Player.Pieces[id].PushOpponent(this.Players))
             {
                 Console.WriteLine($"{move.Player.Name} pushed opponent into their nest!");
+                Console.ReadKey();
+                Console.Clear();
             }
         }
 

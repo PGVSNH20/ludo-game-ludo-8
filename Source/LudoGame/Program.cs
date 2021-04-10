@@ -1,4 +1,5 @@
 ﻿using LudoGame;
+using LudoGame.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,13 @@ namespace LudoGame
 {
     public class Program
     {
+
         public class Game
         {
             public static void Main(string[] args)
             {
+                using var context = new LudoDbContext();
+
                 bool isRunning = true;
                 do
                 {
@@ -54,6 +58,8 @@ namespace LudoGame
 
             public static void StartGame()
             {
+                using var context = new LudoDbContext();
+
                 var players = new List<IPlayer>();
                 var moves = new List<Move>();
 
@@ -71,7 +77,10 @@ namespace LudoGame
                     if (success)
                     {
 
+
                         switch (result)
+
+
                         {
                             case 1:
                                 Console.Write("Enter player name: ");
@@ -91,6 +100,7 @@ namespace LudoGame
                                 i--;
                                 break;
                         }
+                 
                     }
 
                     else
@@ -102,6 +112,12 @@ namespace LudoGame
                 }
 
                 RenderGame(players, moves, DateTime.Now);
+
+                foreach (var player in players)
+                {
+                    context.Player.Add(player as Player);
+                }
+                context.SaveChanges();
             }
 
             public static void ResumeGame()
@@ -116,6 +132,7 @@ namespace LudoGame
 
             public static void RenderGame(List<IPlayer> players, List<Move> moves, DateTime gameStarted)
             {
+                using var context = new LudoDbContext();
                 var game = new Board(players, moves, gameStarted);
 
                 //Move move1 = new Move(1, "1", Dice.Roll());
@@ -163,7 +180,7 @@ namespace LudoGame
                                             case 2:
                                             case 3:
                                             case 4:
-                                                if(player.Pieces[pieceId - 1].AbleToMakeMove())
+                                                if (player.Pieces[pieceId - 1].AbleToMakeMove())
                                                 {
                                                     success = true;
                                                 }
@@ -207,7 +224,7 @@ namespace LudoGame
 
                                 if (!player.Pieces[pieceId - 1].AbleToMakeMove())
                                 {
-                                    for(int i = 0; i < player.Pieces.Length; i++)
+                                    for (int i = 0; i < player.Pieces.Length; i++)
                                     {
                                         if (player.Pieces[i].AbleToMakeMove())
                                         {

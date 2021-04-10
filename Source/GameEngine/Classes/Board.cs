@@ -14,7 +14,7 @@ namespace LudoGame
     public class Board
     {
 
-        public Board()
+        public Board(List<Player> players, List<Move> moves)
         {
 
         }
@@ -24,6 +24,10 @@ namespace LudoGame
             Players = players;
             Moves = moves;
             GameStarted = gameStarted;
+        }
+
+        public Board(List<Player> players, List<Move> moves, DateTime gameStarted) : this(players, moves)
+        {
         }
 
         public int ID { get; set; }

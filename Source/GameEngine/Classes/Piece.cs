@@ -17,7 +17,7 @@ namespace LudoGame
         public Position SixthPosition { get; set; }
         public Position NestPosition { get; set; }
         public Position EnterFinalTrackPosition { get; set; }
-        public Position EndPosition = new Position(5,5);
+        public Position EndPosition = new Position(5, 5);
         public int MoveDirectionX { get; set; } = 0;
         public int MoveDirectionY { get; set; } = 0;
 
@@ -38,7 +38,7 @@ namespace LudoGame
 
         public bool AbleToMakeMove()
         {
-            if(Dice.Value != 1 && Dice.Value != 6)
+            if (Dice.Value != 1 && Dice.Value != 6)
             {
                 if (this.CurrentPosition.Compare(this.NestPosition))
                 {
@@ -46,7 +46,7 @@ namespace LudoGame
                 }
             }
 
-            if(this.Moves+Dice.Value > 45)
+            if (this.Moves + Dice.Value > 45)
             {
                 return false;
             }
@@ -61,7 +61,7 @@ namespace LudoGame
                 this.CurrentPosition.Y = this.StartPosition.Y;
                 this.Moves = 1;
             }
-            
+
             else if (Dice.Value == 6)
             {
                 this.CurrentPosition.X = this.SixthPosition.X;
@@ -72,11 +72,11 @@ namespace LudoGame
 
         public bool PushOpponent(List<IPlayer> players)
         {
-            foreach(var player in players)
+            foreach (var player in players)
             {
-                if(this.Color != player.Color)
+                if (this.Color != player.Color)
                 {
-                    for(int i = 0; i < player.Pieces.Length; i++)
+                    for (int i = 0; i < player.Pieces.Length; i++)
                     {
                         if (this.CurrentPosition.Compare(player.Pieces[i].CurrentPosition) && !this.CurrentPosition.Compare(this.EndPosition))
                         {
@@ -101,7 +101,7 @@ namespace LudoGame
 
             if (this.CurrentPosition.Compare(this.EnterFinalTrackPosition))
             {
-                if(this.MoveDirectionX == 1)
+                if (this.MoveDirectionX == 1)
                 {
                     this.MoveDirectionX = 0;
                     this.MoveDirectionY = 1;

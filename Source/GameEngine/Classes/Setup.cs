@@ -21,7 +21,7 @@ namespace LudoGame
                 pieces[2] = new Piece(3, color, new Position(0, 1), RedStartPosition, RedSixthPosition, new Position(0, 1), RedEnterPosition);
                 pieces[3] = new Piece(4, color, new Position(1, 1), RedStartPosition, RedSixthPosition, new Position(1, 1), RedEnterPosition);
             }
-            
+
             else if (color == Colors.Green)
             {
                 var GreenStartPosition = new Position(6, 0);
@@ -32,7 +32,7 @@ namespace LudoGame
                 pieces[2] = new Piece(3, color, new Position(9, 1), GreenStartPosition, GreenSixthPosition, new Position(9, 1), GreenEnterPosition);
                 pieces[3] = new Piece(4, color, new Position(10, 1), GreenStartPosition, GreenSixthPosition, new Position(10, 1), GreenEnterPosition);
             }
-            
+
             else if (color == Colors.Yellow)
             {
                 var YellowStartPosition = new Position(10, 6);

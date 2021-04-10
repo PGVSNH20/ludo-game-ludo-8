@@ -15,7 +15,7 @@ namespace LudoGame
 
         public Player(string name, Colors color)
         {
-            if(name == "")
+            if (name == "")
                 Name = $"{color} Player";
             else
                 Name = name;

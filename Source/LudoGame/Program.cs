@@ -221,16 +221,16 @@ namespace LudoGame
                         Move currentMove = new Move(player, pieceId, Dice.Value);
                         game.MovePiece(currentMove);
                         game.Moves.Add(currentMove);
-
-                        if (game.Ended())
-                            gameRunning = false;
-
                         Console.Clear();
+
+                        if (game.Ended(player))
+                        {
+                            gameRunning = false;
+                            game.PrintLudoBoard();
+                            Console.WriteLine("You won!");
+                        } 
                     }
                 } while (gameRunning);
-
-                game.PrintLudoBoard();
-                Console.WriteLine("You won!");
                 Clear();
             }
 

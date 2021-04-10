@@ -100,8 +100,7 @@ namespace LudoGame
                                 i--;
                                 break;
                         }
-
-
+                 
                     }
 
                     else
@@ -113,8 +112,12 @@ namespace LudoGame
                 }
 
                 RenderGame(players, moves, DateTime.Now);
-                //context.Player.Add() ;
-                //context.SaveChanges();
+
+                foreach (var player in players)
+                {
+                    context.Player.Add(player as Player);
+                }
+                context.SaveChanges();
             }
 
             public static void ResumeGame()

@@ -16,7 +16,7 @@ namespace LudoGame
         {
             public static void Main(string[] args)
             {
-
+                using var context = new LudoDbContext();
 
                 bool isRunning = true;
                 do
@@ -129,6 +129,7 @@ namespace LudoGame
 
             public static void RenderGame(List<IPlayer> players, List<Move> moves, DateTime gameStarted)
             {
+                using var context = new LudoDbContext();
                 var game = new Board(players, moves, gameStarted);
 
                 //Move move1 = new Move(1, "1", Dice.Roll());

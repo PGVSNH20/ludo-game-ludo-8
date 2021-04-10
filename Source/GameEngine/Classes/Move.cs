@@ -17,8 +17,8 @@ namespace LudoGame
         public int DiceValue { get; set; }
 
         public Move()
-            {
-            }
+        {
+        }
 
         public Move(IPlayer player, int pieceId, int diceValue)
         {

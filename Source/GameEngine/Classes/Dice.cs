@@ -18,7 +18,7 @@ namespace LudoGame
         }
         public static int Roll(int value)
         {
-            if(value < 1)
+            if (value < 1)
             {
                 Dice.Value = 1;
             }
@@ -30,7 +30,7 @@ namespace LudoGame
             {
                 Dice.Value = value;
             }
-            
+
             return Dice.Value;
         }
     }

@@ -11,13 +11,13 @@ namespace LudoGame
 {
     public class Program
     {
-        
+
         public class Game
         {
             public static void Main(string[] args)
             {
-                
-                
+
+
                 bool isRunning = true;
                 do
                 {
@@ -76,7 +76,7 @@ namespace LudoGame
 
                     if (success)
                     {
-                        
+
 
                         switch (result)
 
@@ -100,7 +100,7 @@ namespace LudoGame
                                 i--;
                                 break;
                         }
-                        
+
 
                     }
 
@@ -111,7 +111,7 @@ namespace LudoGame
                     }
                     Clear();
                 }
-                
+
                 RenderGame(players, moves, DateTime.Now);
                 //context.Player.Add() ;
                 //context.SaveChanges();
@@ -176,7 +176,7 @@ namespace LudoGame
                                             case 2:
                                             case 3:
                                             case 4:
-                                                if(player.Pieces[pieceId - 1].AbleToMakeMove())
+                                                if (player.Pieces[pieceId - 1].AbleToMakeMove())
                                                 {
                                                     success = true;
                                                 }
@@ -220,7 +220,7 @@ namespace LudoGame
 
                                 if (!player.Pieces[pieceId - 1].AbleToMakeMove())
                                 {
-                                    for(int i = 0; i < player.Pieces.Length; i++)
+                                    for (int i = 0; i < player.Pieces.Length; i++)
                                     {
                                         if (player.Pieces[i].AbleToMakeMove())
                                         {

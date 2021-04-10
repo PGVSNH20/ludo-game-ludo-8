@@ -81,30 +81,5 @@ namespace LudoGame
         {
             Console.WriteLine("2: Pick a piece to move");
         }
-
-
-        //// diceValue ger steg,
-        //// pieceID är det som ska flyttas på Board
-        //// Detta ska loggas i Moves på något vis
-        //// Så att man håller koll på positionen av varje Piece
-        //public void MovePiece(int playerID, string pieceID, int diceValue, int posX, int posY)
-        //{
-        //    Player
-        //    Piece = pieceID;
-        //    Dice.Value = diceValue;
-
-        //}
-
-        //// Om en piece står på samma moves som en annan piece så ska den knuffa ut motståndaren från brädet
-        //// Logik för vad som händer när man blir utknuffad behöver läggas till
-        //// Logik för vem som var först till ett move behöver loggas för att detta ska fungera rätvist :)
-        //public static void Push()
-        //{
-        //    // lägg till lite lambda magic här
-        //    if (Piece(Position(x, y)) == Piece(Position(x, y))
-        //        {
-        //        //knuffa tillbaka motståndaren till sitt bo
-        //    }
-        //}
     }
 }

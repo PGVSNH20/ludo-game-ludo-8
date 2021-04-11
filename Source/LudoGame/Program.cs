@@ -128,16 +128,21 @@ namespace LudoGame
             {
                 Console.WriteLine("Resuming game...");
                 using var context = new LudoDbContext();
-                var game = context.Board.Where(g => g.ID > 0).Single();
+                var game = context.Board.Where(g => g.ID == 10).Single();
                 var players = context.Player.Where(p => p.BoardID == game.ID).ToList();
                 var moves = context.Move.Where(m => m.BoardID == game.ID).ToList();
 
-                Console.WriteLine($"{game.ID}");
+                Console.WriteLine(game.ID);
                 Clear();
 
                 foreach(var player in players)
                 {
                     player.Pieces = Setup.Pieces(player.Color);
+                }
+
+                foreach(var move in moves)
+                {
+                    move.Player = players.Where(p => p.ID == move.PlayerID).Single();
                 }
 
                 game.Players = players;
@@ -161,15 +166,19 @@ namespace LudoGame
                 // foreach move-logik
                 foreach (var move in game.Moves)
                 {
+                    Dice.Value = move.DiceValue;
                     game.MovePiece(move);
                 }
+
+                Clear();
 
                 bool gameRunning = true;
 
                 do
                 {
                     foreach (var player in game.Players)
-                    {
+                    {   
+                        bool fool = false;
                         game.PrintLudoBoard();
                         int pieceId = 1;
 
@@ -187,6 +196,7 @@ namespace LudoGame
                                 if (!player.Pieces[0].AbleToMakeMove() && !player.Pieces[1].AbleToMakeMove() && !player.Pieces[2].AbleToMakeMove() && !player.Pieces[3].AbleToMakeMove())
                                 {
                                     Console.WriteLine("You can't move any piece.");
+                                    fool = true;
                                     success = true;
                                 }
 
@@ -237,6 +247,7 @@ namespace LudoGame
                             game.PrintLudoBoard();
                             if (!player.Pieces[0].AbleToMakeMove() && !player.Pieces[1].AbleToMakeMove() && !player.Pieces[2].AbleToMakeMove() && !player.Pieces[3].AbleToMakeMove())
                             {
+                                fool = true;
                                 Console.WriteLine($"{player.Name} can't move any piece.");
                             }
                             else
@@ -259,13 +270,16 @@ namespace LudoGame
                             }
                         }
 
-                        Move currentMove = new Move(player, pieceId, Dice.Value, player.ID, game.ID);
-                        game.MovePiece(currentMove);
-                        game.Moves.Add(currentMove);
+                        if (!fool)
+                        {
+                            Move currentMove = new Move(player, pieceId, Dice.Value, player.ID, game.ID);
+                            game.MovePiece(currentMove);
+                            game.Moves.Add(currentMove);
 
-                        using var movecontext = new LudoDbContext();
-                        movecontext.Move.Add(currentMove);
-                        movecontext.SaveChanges();
+                            using var movecontext = new LudoDbContext();
+                            movecontext.Move.Add(currentMove);
+                            movecontext.SaveChanges();
+                        }
 
                         Console.Clear();
 

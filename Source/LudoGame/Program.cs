@@ -127,6 +127,24 @@ namespace LudoGame
             public static void ResumeGame()
             {
                 Console.WriteLine("Resuming game...");
+                using var context = new LudoDbContext();
+                var game = context.Board.Where(g => g.ID > 0).Single();
+                var players = context.Player.Where(p => p.BoardID == game.ID).ToList();
+                var moves = context.Move.Where(m => m.BoardID == game.ID).ToList();
+
+                Console.WriteLine($"{game.ID}");
+                Clear();
+
+                foreach(var player in players)
+                {
+                    player.Pieces = Setup.Pieces(player.Color);
+                }
+
+                game.Players = players;
+                game.Moves = moves;
+
+                Clear();
+                RenderGame(game);
             }
 
             public static void LoadGame()
@@ -141,6 +159,10 @@ namespace LudoGame
                 //game.MovePiece(move1);
 
                 // foreach move-logik
+                foreach (var move in game.Moves)
+                {
+                    game.MovePiece(move);
+                }
 
                 bool gameRunning = true;
 

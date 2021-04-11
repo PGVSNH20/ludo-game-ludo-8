@@ -243,16 +243,24 @@ namespace LudoGame
                         Move currentMove = new Move(player, pieceId, Dice.Value);
                         game.MovePiece(currentMove);
                         game.Moves.Add(currentMove);
-
-                        if (game.Ended())
-                            gameRunning = false;
-
                         Console.Clear();
+
+                        if (game.Ended(player))
+                        {
+                            gameRunning = false;
+                            game.PrintLudoBoard();
+                            Console.WriteLine($"{player.Name} won!\n");
+                            foreach(var newPlayer1337 in players)
+                            {
+                                for(int hej = 0; hej < newPlayer1337.Pieces.Length; hej++)
+                                {
+                                    Console.WriteLine($"{newPlayer1337.Color}: {newPlayer1337.Pieces[hej].CurrentPosition.X}, {player.Pieces[hej].CurrentPosition.Y}");
+                                }
+                            }
+                            Console.ReadKey();
+                        } 
                     }
                 } while (gameRunning);
-
-                game.PrintLudoBoard();
-                Console.WriteLine("You won!");
                 Clear();
             }
 

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace LudoGame
@@ -33,25 +34,23 @@ namespace LudoGame
 
 
 
-        public bool Ended()
+        public bool Ended(IPlayer player)
         {
-            foreach (var player in this.Players)
+            int piecesInEndPos = 0;
+            for (int i = 0; i < player.Pieces.Count(); i++)
             {
-                int piecesInEndPos = 0;
-                for (int i = 0; i < player.Pieces.Count(); i++)
+                if (player.Pieces[i].CurrentPosition.Compare(player.Pieces[i].EndPosition))
                 {
-                    if (player.Pieces[i].CurrentPosition.Compare(player.Pieces[i].EndPosition))
-                    {
-                        piecesInEndPos++;
-                    }
-                }
-
-                if (piecesInEndPos == 4)
-                {
-                    this.GameEnded = DateTime.Now;
-                    return true;
+                    piecesInEndPos++;
                 }
             }
+
+            if (piecesInEndPos == 4)
+            {
+                this.GameEnded = DateTime.Now;
+                return true;
+            }
+
             return false;
         }
 
@@ -75,7 +74,15 @@ namespace LudoGame
             if (move.Player.Pieces[id].PushOpponent(this.Players))
             {
                 Console.WriteLine($"{move.Player.Name} pushed opponent into their nest!");
-                Console.ReadKey();
+                if (move.Player.GetType() == typeof(Player))
+                {
+                    Console.ReadKey();
+                }
+                else if (move.Player.GetType() == typeof(AIPlayer))
+                {
+                    Thread.Sleep(500);
+                }
+
                 Console.Clear();
             }
         }

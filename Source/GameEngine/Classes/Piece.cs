@@ -78,7 +78,7 @@ namespace LudoGame
                 {
                     for (int i = 0; i < player.Pieces.Length; i++)
                     {
-                        if (this.CurrentPosition.Compare(player.Pieces[i].CurrentPosition))
+                        if (this.CurrentPosition.Compare(player.Pieces[i].CurrentPosition) && !this.CurrentPosition.Compare(this.EndPosition))
                         {
                             player.Pieces[i].CurrentPosition.X = player.Pieces[i].NestPosition.X;
                             player.Pieces[i].CurrentPosition.Y = player.Pieces[i].NestPosition.Y;

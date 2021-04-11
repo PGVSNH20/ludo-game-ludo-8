@@ -12,6 +12,7 @@ namespace LudoGame
         public string Name { get; set; }
         public Colors Color { get; set; }
         public Piece[] Pieces { get; set; }
+        public int BoardID { get; set; }
         public void Thinking();
     }
 }

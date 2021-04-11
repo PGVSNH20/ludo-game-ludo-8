@@ -14,6 +14,7 @@ namespace LudoGame
         public Colors Color { get; set; }
         [NotMapped]
         public Piece[] Pieces { get; set; }
+        public int BoardID { get; set; }
 
         public Player(string name, Colors color)
         {

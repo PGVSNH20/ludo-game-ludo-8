@@ -58,7 +58,7 @@ namespace LudoGame
 
             public static void StartGame()
             {
-                
+
                 var players = new List<IPlayer>();
                 var moves = new List<Move>();
 
@@ -117,6 +117,12 @@ namespace LudoGame
                     {
                         context.Player.Add((Player)player);
                     }
+
+                    else if (player.GetType() == typeof(AIPlayer))
+                    {
+                        context.AIPlayer.Add((AIPlayer)player);
+                    }
+
                 }
                 context.SaveChanges();
 
@@ -139,6 +145,8 @@ namespace LudoGame
             {
                 using var context = new LudoDbContext();
                 var game = new Board(players, moves, gameStarted);
+                context.Board.Add(game);
+                context.SaveChanges();
 
                 //Move move1 = new Move(1, "1", Dice.Roll());
                 //game.MovePiece(move1);
@@ -240,9 +248,16 @@ namespace LudoGame
                             }
                         }
 
-                        Move currentMove = new Move(player, pieceId, Dice.Value);
+
+
+                        Move currentMove = new Move(player, pieceId, Dice.Value, player.ID);
                         game.MovePiece(currentMove);
                         game.Moves.Add(currentMove);
+
+                        using var movecontext = new LudoDbContext();
+                        movecontext.Move.Add(currentMove);
+                        movecontext.SaveChanges();
+
                         Console.Clear();
 
                         if (game.Ended(player))
@@ -250,15 +265,15 @@ namespace LudoGame
                             gameRunning = false;
                             game.PrintLudoBoard();
                             Console.WriteLine($"{player.Name} won!\n");
-                            foreach(var newPlayer1337 in players)
+                            foreach (var newPlayer1337 in players)
                             {
-                                for(int hej = 0; hej < newPlayer1337.Pieces.Length; hej++)
+                                for (int hej = 0; hej < newPlayer1337.Pieces.Length; hej++)
                                 {
                                     Console.WriteLine($"{newPlayer1337.Color}: {newPlayer1337.Pieces[hej].CurrentPosition.X}, {player.Pieces[hej].CurrentPosition.Y}");
                                 }
                             }
                             Console.ReadKey();
-                        } 
+                        }
                     }
                 } while (gameRunning);
                 Clear();

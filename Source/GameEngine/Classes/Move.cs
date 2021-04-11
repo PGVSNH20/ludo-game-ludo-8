@@ -11,8 +11,8 @@ namespace LudoGame
     {
         [NotMapped]
         public IPlayer Player { get; set; }
-
         public int ID { get; set; }
+        public int PlayerID { get; set; }
         public int PieceID { get; set; }
         public int DiceValue { get; set; }
 
@@ -20,11 +20,12 @@ namespace LudoGame
         {
         }
 
-        public Move(IPlayer player, int pieceId, int diceValue)
+        public Move(IPlayer player, int pieceId, int diceValue, int playerId)
         {
             Player = player;
             PieceID = pieceId;
             DiceValue = diceValue;
+            PlayerID = playerId;
         }
     }
 }

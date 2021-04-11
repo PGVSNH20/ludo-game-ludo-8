@@ -6,7 +6,9 @@ namespace LudoGame.Database
     {
         public DbSet<Board> Board { get; set; }
         public DbSet<Player> Player { get; set; }
+        public DbSet<AIPlayer> AIPlayer { get; set; }
         public DbSet<Piece> Piece { get; set; }
+        public DbSet<Move> Move { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         => options.UseSqlite("Data Source=C:/Users/frejb/source/repos/ludo-game-ludo-8/Source/LudoGame/LudoDB.db");

@@ -3,35 +3,20 @@ using System;
 using LudoGame.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LudoGame.Migrations
 {
     [DbContext(typeof(LudoDbContext))]
-    partial class LudoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210411094518_Added-MoveDBSet")]
+    partial class AddedMoveDBSet
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.5");
-
-            modelBuilder.Entity("LudoGame.AIPlayer", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Color")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("AIPlayer");
-                });
 
             modelBuilder.Entity("LudoGame.Board", b =>
                 {
@@ -65,9 +50,6 @@ namespace LudoGame.Migrations
                     b.Property<int>("PieceID")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("PlayerID")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("ID");
 
                     b.HasIndex("BoardID");
@@ -79,9 +61,6 @@ namespace LudoGame.Migrations
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("AIPlayerID")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Color")
@@ -112,8 +91,6 @@ namespace LudoGame.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("AIPlayerID");
 
                     b.HasIndex("CurrentPositionID");
 
@@ -171,10 +148,6 @@ namespace LudoGame.Migrations
 
             modelBuilder.Entity("LudoGame.Piece", b =>
                 {
-                    b.HasOne("LudoGame.AIPlayer", null)
-                        .WithMany("Pieces")
-                        .HasForeignKey("AIPlayerID");
-
                     b.HasOne("LudoGame.Position", "CurrentPosition")
                         .WithMany()
                         .HasForeignKey("CurrentPositionID");
@@ -204,11 +177,6 @@ namespace LudoGame.Migrations
                     b.Navigation("SixthPosition");
 
                     b.Navigation("StartPosition");
-                });
-
-            modelBuilder.Entity("LudoGame.AIPlayer", b =>
-                {
-                    b.Navigation("Pieces");
                 });
 
             modelBuilder.Entity("LudoGame.Board", b =>

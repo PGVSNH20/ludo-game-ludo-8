@@ -12,12 +12,16 @@ namespace LudoGame
 
     public class Board
     {
+        public int ID { get; set; }
+        public List<Move> Moves { get; set; }
+        [NotMapped]
+        public List<IPlayer> Players { get; set; }
+        public DateTime GameStarted { get; set; }
+        public DateTime? GameEnded { get; set; }
 
-        public Board(List<Player> players, List<Move> moves)
-        {
-
+        public Board()
+        { 
         }
-
         public Board(List<IPlayer> players, List<Move> moves, DateTime gameStarted)
         {
             Players = players;
@@ -25,16 +29,9 @@ namespace LudoGame
             GameStarted = gameStarted;
         }
 
-        public Board(List<Player> players, List<Move> moves, DateTime gameStarted) : this(players, moves)
-        {
-        }
 
-        public int ID { get; set; }
-        public List<Move> Moves { get; set; }
-        [NotMapped]
-        public List<IPlayer> Players { get; set; }
-        public DateTime GameStarted { get; set; }
-        public DateTime? GameEnded { get; set; }
+
+
 
         public bool Ended()
         {

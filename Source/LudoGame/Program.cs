@@ -58,8 +58,7 @@ namespace LudoGame
 
             public static void StartGame()
             {
-                using var context = new LudoDbContext();
-
+                
                 var players = new List<IPlayer>();
                 var moves = new List<Move>();
 
@@ -100,7 +99,7 @@ namespace LudoGame
                                 i--;
                                 break;
                         }
-                 
+
                     }
 
                     else
@@ -111,15 +110,21 @@ namespace LudoGame
                     Clear();
                 }
 
-                RenderGame(players, moves, DateTime.Now);
-
+                using var context = new LudoDbContext();
                 foreach (var player in players)
                 {
-                    context.Player.Add(player as Player);
+                    if (player.GetType() == typeof(Player))
+                    {
+                        context.Player.Add((Player)player);
+                    }
                 }
                 context.SaveChanges();
-            }
 
+
+                RenderGame(players, moves, DateTime.Now);
+
+
+            }
             public static void ResumeGame()
             {
                 Console.WriteLine("Resuming game...");

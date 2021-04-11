@@ -70,7 +70,7 @@ namespace LudoGame
             }
         }
 
-        public bool PushOpponent(List<IPlayer> players)
+        public bool PushOpponent(List<Player> players)
         {
             foreach (var player in players)
             {

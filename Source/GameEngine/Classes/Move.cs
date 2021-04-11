@@ -10,7 +10,7 @@ namespace LudoGame
     public class Move
     {
         [NotMapped]
-        public IPlayer Player { get; set; }
+        public Player Player { get; set; }
         public int ID { get; set; }
         public int PlayerID { get; set; }
         public int PieceID { get; set; }
@@ -20,7 +20,7 @@ namespace LudoGame
         {
         }
 
-        public Move(IPlayer player, int pieceId, int diceValue, int playerId)
+        public Move(Player player, int pieceId, int diceValue, int playerId)
         {
             Player = player;
             PieceID = pieceId;

@@ -11,7 +11,6 @@ namespace LudoGame
 {
     public class Program
     {
-
         public class Game
         {
             public static void Main(string[] args)
@@ -59,7 +58,7 @@ namespace LudoGame
             public static void StartGame()
             {
 
-                var players = new List<IPlayer>();
+                var players = new List<Player>();
                 var moves = new List<Move>();
 
                 for (int i = 0; i < 4; i++)
@@ -75,22 +74,20 @@ namespace LudoGame
 
                     if (success)
                     {
-
-
                         switch (result)
-
-
                         {
                             case 1:
                                 Console.Write("Enter player name: ");
                                 var name = Console.ReadLine();
-                                var newPlayer = new Player(name, colorType);
+                                var newPlayer = new Player(name, colorType, false);
                                 players.Add(newPlayer);
                                 Console.Clear();
                                 Console.WriteLine($"Adding new {newPlayer.Name}({currentColor})...");
                                 break;
                             case 2:
-                                players.Add(new AIPlayer(colorType));
+                                Console.Write("Enter player name: ");
+                                name = Console.ReadLine();
+                                players.Add(new Player(name, colorType, true));
                                 Console.Clear();
                                 Console.WriteLine($"Adding new AI({currentColor})...");
                                 break;
@@ -99,7 +96,6 @@ namespace LudoGame
                                 i--;
                                 break;
                         }
-
                     }
 
                     else
@@ -113,16 +109,7 @@ namespace LudoGame
                 using var context = new LudoDbContext();
                 foreach (var player in players)
                 {
-                    if (player.GetType() == typeof(Player))
-                    {
-                        context.Player.Add((Player)player);
-                    }
-
-                    else if (player.GetType() == typeof(AIPlayer))
-                    {
-                        context.AIPlayer.Add((AIPlayer)player);
-                    }
-
+                    context.Player.Add(player);
                 }
                 context.SaveChanges();
 
@@ -141,7 +128,7 @@ namespace LudoGame
                 Console.WriteLine("Loading game...");
             }
 
-            public static void RenderGame(List<IPlayer> players, List<Move> moves, DateTime gameStarted)
+            public static void RenderGame(List<Player> players, List<Move> moves, DateTime gameStarted)
             {
                 using var context = new LudoDbContext();
                 var game = new Board(players, moves, gameStarted);
@@ -162,7 +149,7 @@ namespace LudoGame
                         game.PrintLudoBoard();
                         int pieceId = 1;
 
-                        if (player.GetType() == typeof(Player))
+                        if (player.AI == false)
                         {
                             Console.WriteLine($"It's {player.Name} turn. Press any key to roll dice!");
                             Clear();
@@ -217,7 +204,7 @@ namespace LudoGame
                             } while (!success);
                         }
 
-                        else if (player.GetType() == typeof(AIPlayer))
+                        else if (player.AI == true)
                         {
                             Console.WriteLine($"It's {player.Name} turn. Rolling the dice");
                             player.Thinking();
@@ -247,8 +234,6 @@ namespace LudoGame
                                 }
                             }
                         }
-
-
 
                         Move currentMove = new Move(player, pieceId, Dice.Value, player.ID);
                         game.MovePiece(currentMove);

@@ -6,7 +6,6 @@ namespace LudoGame.Database
     {
         public DbSet<Board> Board { get; set; }
         public DbSet<Player> Player { get; set; }
-        public DbSet<AIPlayer> AIPlayer { get; set; }
         public DbSet<Piece> Piece { get; set; }
         public DbSet<Move> Move { get; set; }
 

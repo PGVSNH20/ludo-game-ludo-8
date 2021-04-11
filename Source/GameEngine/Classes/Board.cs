@@ -16,14 +16,14 @@ namespace LudoGame
         public int ID { get; set; }
         public List<Move> Moves { get; set; }
         [NotMapped]
-        public List<IPlayer> Players { get; set; }
+        public List<Player> Players { get; set; }
         public DateTime GameStarted { get; set; }
         public DateTime? GameEnded { get; set; }
 
         public Board()
         { 
         }
-        public Board(List<IPlayer> players, List<Move> moves, DateTime gameStarted)
+        public Board(List<Player> players, List<Move> moves, DateTime gameStarted)
         {
             Players = players;
             Moves = moves;
@@ -34,7 +34,7 @@ namespace LudoGame
 
 
 
-        public bool Ended(IPlayer player)
+        public bool Ended(Player player)
         {
             int piecesInEndPos = 0;
             for (int i = 0; i < player.Pieces.Count(); i++)
@@ -74,11 +74,11 @@ namespace LudoGame
             if (move.Player.Pieces[id].PushOpponent(this.Players))
             {
                 Console.WriteLine($"{move.Player.Name} pushed opponent into their nest!");
-                if (move.Player.GetType() == typeof(Player))
+                if (move.Player.AI == false)
                 {
                     Console.ReadKey();
                 }
-                else if (move.Player.GetType() == typeof(AIPlayer))
+                else if (move.Player.AI == true)
                 {
                     Thread.Sleep(500);
                 }

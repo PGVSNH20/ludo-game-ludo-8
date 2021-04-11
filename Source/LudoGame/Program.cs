@@ -105,16 +105,22 @@ namespace LudoGame
                     }
                     Clear();
                 }
-
                 using var context = new LudoDbContext();
+                var game = new Board(players, moves, DateTime.Now);
+                context.Board.Add(game);
+                context.SaveChanges();
+
+
+
                 foreach (var player in players)
                 {
+                    player.BoardID = game.ID;
                     context.Player.Add(player);
                 }
                 context.SaveChanges();
 
 
-                RenderGame(players, moves, DateTime.Now);
+                RenderGame(game);
 
 
             }
@@ -128,12 +134,8 @@ namespace LudoGame
                 Console.WriteLine("Loading game...");
             }
 
-            public static void RenderGame(List<Player> players, List<Move> moves, DateTime gameStarted)
+            public static void RenderGame(Board game)
             {
-                using var context = new LudoDbContext();
-                var game = new Board(players, moves, gameStarted);
-                context.Board.Add(game);
-                context.SaveChanges();
 
                 //Move move1 = new Move(1, "1", Dice.Roll());
                 //game.MovePiece(move1);
@@ -235,7 +237,7 @@ namespace LudoGame
                             }
                         }
 
-                        Move currentMove = new Move(player, pieceId, Dice.Value, player.ID);
+                        Move currentMove = new Move(player, pieceId, Dice.Value, player.ID, game.ID);
                         game.MovePiece(currentMove);
                         game.Moves.Add(currentMove);
 
@@ -250,7 +252,7 @@ namespace LudoGame
                             gameRunning = false;
                             game.PrintLudoBoard();
                             Console.WriteLine($"{player.Name} won!\n");
-                            foreach (var newPlayer1337 in players)
+                            foreach (var newPlayer1337 in game.Players)
                             {
                                 for (int hej = 0; hej < newPlayer1337.Pieces.Length; hej++)
                                 {

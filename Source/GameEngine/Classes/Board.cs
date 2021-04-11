@@ -29,11 +29,6 @@ namespace LudoGame
             Moves = moves;
             GameStarted = gameStarted;
         }
-
-
-
-
-
         public bool Ended(Player player)
         {
             int piecesInEndPos = 0;

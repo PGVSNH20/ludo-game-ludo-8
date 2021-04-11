@@ -16,16 +16,19 @@ namespace LudoGame
         public int PieceID { get; set; }
         public int DiceValue { get; set; }
 
+        public int BoardID { get; set; }
+
         public Move()
         {
         }
 
-        public Move(Player player, int pieceId, int diceValue, int playerId)
+        public Move(Player player, int pieceId, int diceValue, int playerId, int boardId)
         {
             Player = player;
             PieceID = pieceId;
             DiceValue = diceValue;
             PlayerID = playerId;
+            BoardID = boardId;
         }
     }
 }

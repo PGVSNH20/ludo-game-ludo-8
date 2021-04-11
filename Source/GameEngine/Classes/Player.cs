@@ -18,6 +18,12 @@ namespace LudoGame
         public int BoardID { get; set; }
         public bool AI { get; set; }
 
+
+        public Player ()
+            {
+
+            }
+
         public Player(string name, Colors color, bool aiplayer)
         {
             if (name == "" && aiplayer == false)

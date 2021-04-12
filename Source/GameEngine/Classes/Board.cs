@@ -42,7 +42,6 @@ namespace LudoGame
 
             if (piecesInEndPos == 4)
             {
-                this.GameEnded = DateTime.Now;
                 return true;
             }
 

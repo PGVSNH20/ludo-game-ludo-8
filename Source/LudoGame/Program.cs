@@ -57,7 +57,6 @@ namespace LudoGame
 
             public static void StartGame()
             {
-
                 var players = new List<Player>();
                 var moves = new List<Move>();
 
@@ -105,12 +104,11 @@ namespace LudoGame
                     }
                     Clear();
                 }
+
                 using var context = new LudoDbContext();
                 var game = new Board(players, moves, DateTime.Now);
                 context.Board.Add(game);
                 context.SaveChanges();
-
-
 
                 foreach (var player in players)
                 {
@@ -118,52 +116,99 @@ namespace LudoGame
                     context.Player.Add(player);
                 }
                 context.SaveChanges();
-
-
                 RenderGame(game);
-
-
             }
             public static void ResumeGame()
             {
-                Console.WriteLine("Resuming game...");
                 using var context = new LudoDbContext();
-                var game = context.Board.Where(g => g.ID == 10).Single();
-                var players = context.Player.Where(p => p.BoardID == game.ID).ToList();
-                var moves = context.Move.Where(m => m.BoardID == game.ID).ToList();
+                if (context.Board.Where(g => g.ID >= 0).Any()) { 
+                    Console.WriteLine("Resuming game...");
+                    var game = context.Board.Where(g => g.ID >= 0).Last();
+                    var players = context.Player.Where(p => p.BoardID == game.ID).ToList();
+                    var moves = context.Move.Where(m => m.BoardID == game.ID).ToList();
 
-                Console.WriteLine(game.ID);
-                Clear();
+                    Console.WriteLine(game.ID);
+                    Clear();
 
-                foreach(var player in players)
-                {
-                    player.Pieces = Setup.Pieces(player.Color);
+                    foreach(var player in players)
+                    {
+                        player.Pieces = Setup.Pieces(player.Color);
+                    }
+
+                    foreach(var move in moves)
+                    {
+                        move.Player = players.Where(p => p.ID == move.PlayerID).Single();
+                    }
+
+                    game.Players = players;
+                    game.Moves = moves;
+
+                    Clear();
+                    RenderGame(game);
                 }
-
-                foreach(var move in moves)
+                else
                 {
-                    move.Player = players.Where(p => p.ID == move.PlayerID).Single();
+                    Console.WriteLine("Can't find any games in the database.");
+                    Clear();
                 }
-
-                game.Players = players;
-                game.Moves = moves;
-
-                Clear();
-                RenderGame(game);
             }
 
             public static void LoadGame()
             {
-                Console.WriteLine("Loading game...");
+                bool isRunning = true;
+                do
+                {
+                    using var context = new LudoDbContext();
+                    var gameOptions = context.Board.Where(g => g.GameEnded == null).ToList();
+                    foreach (var gameOption in gameOptions)
+                    {
+                        Console.WriteLine($"{gameOption.ID}. {gameOption.GameStarted}");
+                    }
+                    Console.Write("\nEnter the Game ID you would like to start :\t");
+                    var userInput = Console.ReadLine();
+                    var success = Int32.TryParse(userInput, out int result);
+
+                    if (success && context.Board.Where(g => g.ID == result).Any())
+                    {
+                        var game = context.Board.Where(g => g.ID == result).Single();
+                        var players = context.Player.Where(p => p.BoardID == game.ID).ToList();
+                        var moves = context.Move.Where(m => m.BoardID == game.ID).ToList();
+
+                        foreach (var player in players)
+                        {
+                            player.Pieces = Setup.Pieces(player.Color);
+                        }
+
+                        foreach (var move in moves)
+                        {
+                            move.Player = players.Where(p => p.ID == move.PlayerID).Single();
+                        }
+
+                        game.Players = players;
+                        game.Moves = moves;
+
+                        Clear();
+                        RenderGame(game);
+
+                        isRunning = false;
+                    }
+
+                    else if (success)
+                    {
+                        Console.WriteLine("Couldn't find the game you're looking for.");
+                    }
+
+                    else
+                    {
+                        Console.WriteLine("Couldn't parse the value you entered.");
+                    }
+
+                    Console.Clear();
+                } while (isRunning);
             }
 
             public static void RenderGame(Board game)
             {
-
-                //Move move1 = new Move(1, "1", Dice.Roll());
-                //game.MovePiece(move1);
-
-                // foreach move-logik
                 foreach (var move in game.Moves)
                 {
                     Dice.Value = move.DiceValue;
@@ -195,7 +240,7 @@ namespace LudoGame
 
                                 if (!player.Pieces[0].AbleToMakeMove() && !player.Pieces[1].AbleToMakeMove() && !player.Pieces[2].AbleToMakeMove() && !player.Pieces[3].AbleToMakeMove())
                                 {
-                                    Console.WriteLine("You can't move any piece.");
+                                    Console.WriteLine(" You can't move any piece.");
                                     fool = true;
                                     success = true;
                                 }
@@ -285,6 +330,7 @@ namespace LudoGame
 
                         if (game.Ended(player))
                         {
+                            game.GameEnded = DateTime.Now;
                             gameRunning = false;
                             game.PrintLudoBoard();
                             Console.WriteLine($"{player.Name} won!\n");

@@ -1,7 +1,7 @@
 # Documentation for a Ludo game by group 8 (Marcus Broman and Frej Björnsson) 
 
 ## GameEngine
-#### Board
+### Board
 public int ID
 
 public List<Move> Moves
@@ -12,7 +12,7 @@ public DateTime GameStarted
 
 public DateTime? GameEnded
 
-#### Dice
+### Dice
 ####  Move
 ####  Piece
 #### Player

@@ -1,1 +1,5 @@
-#Process Ludo8
+# Process Ludo8
+
+### Discord
+### Github
+### Trial and Error

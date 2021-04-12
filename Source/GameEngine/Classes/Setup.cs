@@ -8,6 +8,26 @@ namespace LudoGame
 {
     public class Setup
     {
+        public static void StringColor(Colors playerColor)
+        {
+            if (playerColor == Colors.Red)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+            }
+            else if (playerColor == Colors.Green)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+            }
+            else if (playerColor == Colors.Yellow)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+            }
+            else if (playerColor == Colors.Blue)
+            {
+                Console.ForegroundColor = ConsoleColor.Blue;
+            }
+        }
+
         public static Piece[] Pieces(Colors color)
         {
             var pieces = new Piece[4];

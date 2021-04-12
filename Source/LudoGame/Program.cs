@@ -122,14 +122,10 @@ namespace LudoGame
             {
                 using var context = new LudoDbContext();
                 if (context.Board.Where(g => g.ID >= 0).Any()) { 
-                    Console.WriteLine("Resuming game...");
                     var game = context.Board.Where(g => g.ID >= 0).OrderBy(i => i.ID).Last();
                     var players = context.Player.Where(p => p.BoardID == game.ID).ToList();
                     var moves = context.Move.Where(m => m.BoardID == game.ID).ToList();
-
-                    Console.WriteLine(game.ID);
-                    Clear();
-
+                    Console.WriteLine($"Resuming game({game.ID})...");
                     foreach(var player in players)
                     {
                         player.Pieces = Setup.Pieces(player.Color);
@@ -142,7 +138,6 @@ namespace LudoGame
 
                     game.Players = players;
                     game.Moves = moves;
-
                     Clear();
                     RenderGame(game);
                 }
@@ -186,8 +181,6 @@ namespace LudoGame
 
                         game.Players = players;
                         game.Moves = moves;
-
-                        Clear();
                         RenderGame(game);
 
                         isRunning = false;
@@ -226,6 +219,7 @@ namespace LudoGame
                         bool fool = false;
                         game.PrintLudoBoard();
                         int pieceId = 1;
+                        Setup.StringColor(player.Color);
 
                         if (player.AI == false)
                         {
@@ -236,6 +230,7 @@ namespace LudoGame
                             do
                             {
                                 game.PrintLudoBoard();
+                                Setup.StringColor(player.Color);
                                 Console.Write($"{player.Name} rolled a {Dice.Value}.");
 
                                 if (!player.Pieces[0].AbleToMakeMove() && !player.Pieces[1].AbleToMakeMove() && !player.Pieces[2].AbleToMakeMove() && !player.Pieces[3].AbleToMakeMove())
@@ -290,6 +285,7 @@ namespace LudoGame
                             Console.Clear();
                             Dice.Roll();
                             game.PrintLudoBoard();
+                            Setup.StringColor(player.Color);
                             if (!player.Pieces[0].AbleToMakeMove() && !player.Pieces[1].AbleToMakeMove() && !player.Pieces[2].AbleToMakeMove() && !player.Pieces[3].AbleToMakeMove())
                             {
                                 fool = true;
@@ -333,7 +329,9 @@ namespace LudoGame
                             game.GameEnded = DateTime.Now;
                             gameRunning = false;
                             game.PrintLudoBoard();
+                            Setup.StringColor(player.Color);
                             Console.WriteLine($"{player.Name} won!\n");
+
                             foreach (var newPlayer1337 in game.Players)
                             {
                                 for (int hej = 0; hej < newPlayer1337.Pieces.Length; hej++)

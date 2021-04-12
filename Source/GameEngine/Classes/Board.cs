@@ -83,6 +83,8 @@ namespace LudoGame
 
         public void PrintLudoBoard()
         {
+
+            Console.ForegroundColor = ConsoleColor.White;
             var allLines = File.ReadAllLines(@"..\..\..\ludo-board.txt");
             for (int y = 0; y < allLines.Length; y++)
             {
@@ -107,26 +109,7 @@ namespace LudoGame
                                 {
                                     if (y == player.Pieces[i].CurrentPosition.Y && x == player.Pieces[i].CurrentPosition.X)
                                     {
-                                        if (player.Pieces[i].Color == Colors.Red)
-                                        {
-                                            Console.ForegroundColor = ConsoleColor.Red;
-                                        }
-
-                                        else if (player.Pieces[i].Color == Colors.Green)
-                                        {
-                                            Console.ForegroundColor = ConsoleColor.Green;
-                                        }
-
-                                        else if (player.Pieces[i].Color == Colors.Yellow)
-                                        {
-                                            Console.ForegroundColor = ConsoleColor.DarkYellow;
-                                        }
-
-                                        else if (player.Pieces[i].Color == Colors.Blue)
-                                        {
-                                            Console.ForegroundColor = ConsoleColor.Blue;
-                                        }
-
+                                        Setup.StringColor(player.Color);
                                         Console.Write(player.Pieces[i].ID + " ");
                                         playerPosition = true;
                                         piecesOnSpot++;
@@ -151,14 +134,7 @@ namespace LudoGame
                                     {
                                         if (player.Pieces[i].NestPosition.Compare(new Position(x, y)))
                                         {
-                                            if (player.Color == Colors.Red)
-                                                Console.ForegroundColor = ConsoleColor.Red;
-                                            else if (player.Color == Colors.Green)
-                                                Console.ForegroundColor = ConsoleColor.Green;
-                                            else if (player.Color == Colors.Yellow)
-                                                Console.ForegroundColor = ConsoleColor.DarkYellow;
-                                            else if (player.Color == Colors.Blue)
-                                                Console.ForegroundColor = ConsoleColor.Blue;
+                                            Setup.StringColor(player.Color);
                                         }
                                     }
                                 }
@@ -172,14 +148,7 @@ namespace LudoGame
                                 {
                                     if (player.Pieces[0].StartPosition.Compare(new Position(x, y)) || player.Pieces[0].SixthPosition.Compare(new Position(x, y)))
                                     {
-                                        if (player.Color == Colors.Red)
-                                            Console.ForegroundColor = ConsoleColor.Red;
-                                        else if (player.Color == Colors.Green)
-                                            Console.ForegroundColor = ConsoleColor.Green;
-                                        else if (player.Color == Colors.Yellow)
-                                            Console.ForegroundColor = ConsoleColor.DarkYellow;
-                                        else if (player.Color == Colors.Blue)
-                                            Console.ForegroundColor = ConsoleColor.Blue;
+                                        Setup.StringColor(player.Color);
                                     }
                                 }
                                 Console.Write("O ");

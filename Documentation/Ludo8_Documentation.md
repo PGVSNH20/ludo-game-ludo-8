@@ -2,6 +2,13 @@
 
 ## GameEngine
 #### Board
+public int ID { get; set; }
+public List<Move> Moves { get; set; }
+[NotMapped]
+public List<Player> Players { get; set; }
+public DateTime GameStarted { get; set; }
+public DateTime? GameEnded { get; set; }
+
 #### Dice
 ####  Move
 ####  Piece

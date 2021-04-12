@@ -1,17 +1,15 @@
 # Ludo8 Methods
 
 ## Board
+For printing the gameboard
 
+* public void PrintLudoBoard()
 
 
 ## Dice
 For rolling the dice and returning a random value between 1 and 6.
 
 * public static int Roll() 
-
-For printing the gameboard
-
-* public void PrintLudoBoard()
 
 ## Move
 

@@ -13,17 +13,17 @@ public DateTime GameStarted
 public DateTime? GameEnded
 
 ### Dice
-####  Move
-####  Piece
-#### Player
-#### Position
-#### Setup
-#### LudoLogic
+### Move
+###  Piece
+### Player
+### Position
+### Setup
+### LudoLogic
 
 ## LudoGame
-#### LudoDbContext
-#### Migrations
-#### Program
+### LudoDbContext
+### Migrations
+### Program
 
 ## LudoDB
 

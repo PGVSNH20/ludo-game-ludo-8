@@ -2,15 +2,15 @@
 
 ## GameEngine
 #### Board
-public int ID { get; set; } 
+public int ID
 
-public List<Move> Moves { get; set; }
+public List<Move> Moves
   
-public List<Player> Players { get; set; }
+public List<Player> Players
   
-public DateTime GameStarted { get; set; }
+public DateTime GameStarted
 
-public DateTime? GameEnded { get; set; }
+public DateTime? GameEnded
 
 #### Dice
 ####  Move

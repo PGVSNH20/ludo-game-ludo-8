@@ -1,7 +1,7 @@
 # Ludo8 Methods
 
 ## Board
-Public Board()
+
 
 
 ## Dice

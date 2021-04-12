@@ -1,4 +1,4 @@
-# Documentation by Ludo8
+# Documentation for Ludolicious
 
 ## GameEngine
 #### Board

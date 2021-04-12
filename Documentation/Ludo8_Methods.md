@@ -47,12 +47,38 @@ Simulates the AIs thinking time
 * public void Thinking()
 
 ## Position
+Compares positions (X and Y coordinates)
+
+* public bool Compare(Position position)
 
 ## Setup
+Sets up all the pieces on the board
 
-## LudoDbContext : DbContext
+* public static Piece[] Pieces(Colors color)
+
+Changes the console foreground color to the player color so you know which turn it is
+
+* public static void StringColor(Colors playerColor)
 
 ## Program
+Adds players, creates a new board and saves the changes to the database
 
+* public static void StartGame()
+
+Resumes the last game played
+
+* public static void ResumeGame()
+
+Loads a saved game from the database
+
+* public static void LoadGame()
+
+Renders the board and connects all other classes, handles user errors, keeps track of turns and other game logic 
+
+* public static void RenderGame(Board game)
+
+Prints the main menu
+
+* public static string PrintMenu()
 
 #### Documentation for Ludolicious by Broman & Bjornsson 2021 ©

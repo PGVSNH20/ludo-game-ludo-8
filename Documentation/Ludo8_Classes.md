@@ -49,7 +49,6 @@
 ### Setup
         public static Piece[] Pieces(Colors color)
         
-### LudoLogic
 
 ## LudoGame
 ### LudoDbContext : DbContext

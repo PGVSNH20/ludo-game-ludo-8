@@ -123,7 +123,7 @@ namespace LudoGame
                 using var context = new LudoDbContext();
                 if (context.Board.Where(g => g.ID >= 0).Any()) { 
                     Console.WriteLine("Resuming game...");
-                    var game = context.Board.Where(g => g.ID >= 0).Last();
+                    var game = context.Board.Where(g => g.ID >= 0).OrderBy(i => i.ID).Last();
                     var players = context.Player.Where(p => p.BoardID == game.ID).ToList();
                     var moves = context.Move.Where(m => m.BoardID == game.ID).ToList();
 

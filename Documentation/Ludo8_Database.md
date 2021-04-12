@@ -1,33 +1,4 @@
-# Documentation for a Ludo game by group 8 (Marcus Broman and Frej Björnsson) 
-
-## GameEngine
-### Board
-public int ID
-
-public List<Move> Moves
-  
-public List<Player> Players
-  
-public DateTime GameStarted
-
-public DateTime? GameEnded
-
-### Dice
-### Move
-###  Piece
-### Player
-### Position
-### Setup
-### LudoLogic
-
-## LudoGame
-### LudoDbContext
-### Migrations
-### Program
-
-## LudoDB
-
-For the database we used SQLite. Because we're making a lightweight app SQLite is perfect. Our app does not take up a lot of memory, so a heavier database would only cost more processing power and slow down the app.
+# LudoDB
 
 Our app only needs to run on a local host so SQLite is a good choice in that aspect because it is easy to learn. 
 
@@ -45,4 +16,3 @@ The following table shows a summary of some pros and cons with SQLite.
 
 
 #### Documentation for Ludolicious by Broman & Bjornsson 2021 ©
-

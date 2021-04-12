@@ -1,19 +1,21 @@
-# GameEngine
-### Board
-### Dice
-###  Move
-###  Piece
-### Player
-### Position
-### Setup
-### LudoLogic
+# Documentation by Ludo8
 
-# LudoGame
-### LudoDbContext
-### Migrations
-### Program
+## GameEngine
+#### Board
+#### Dice
+####  Move
+####  Piece
+#### Player
+#### Position
+#### Setup
+#### LudoLogic
 
-# LudoDB
+## LudoGame
+#### LudoDbContext
+#### Migrations
+#### Program
+
+## LudoDB
 
 For the database we used SQLite. Because we're making a lightweight app SQLite is perfect. Our app does not take up a lot of memory, so a heavier database would only cost more processing power and slow down the app.
 

@@ -20,9 +20,9 @@ namespace LudoGame
 
 
         public Player ()
-            {
+        {
 
-            }
+        }
 
         public Player(string name, Colors color, bool aiplayer)
         {

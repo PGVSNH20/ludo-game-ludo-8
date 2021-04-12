@@ -12,6 +12,13 @@ For rolling the dice and returning a random value between 1 and 6.
 * public static int Roll() 
 
 ## Move
+To move a piece
+
+* public void MovePiece(Move move)
+
+To check if a game has ended 
+
+* public bool Ended(Player player)
 
 ## Piece
 

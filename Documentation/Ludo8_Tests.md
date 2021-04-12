@@ -1,4 +1,5 @@
-# Ludo8 Tests
+# Ludo8 Unit Tests
+## Unit tests made with MSTest
 
 Tests if the dice returns the correct numbers
 

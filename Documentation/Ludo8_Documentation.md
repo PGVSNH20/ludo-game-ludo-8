@@ -14,7 +14,8 @@
 ### Program
 
 # LudoDB
-#### For the database we used SQLite. Because we're making a lightweight app SQLite is perfect. Our app does not take up a lot of memory, so a heavier database would only cost more processing power and slow down the app.
+
+For the database we used SQLite. Because we're making a lightweight app SQLite is perfect. Our app does not take up a lot of memory, so a heavier database would only cost more processing power and slow down the app.
 
 Our app only needs to run on a local host so SQLite is a good choice in that aspect because it is easy to learn. 
 

@@ -1,4 +1,4 @@
-# Documentation for Ludolicious
+# Documentation for a Ludo game by group 8 (Marcus Broman and Frej Björnsson) 
 
 ## GameEngine
 #### Board

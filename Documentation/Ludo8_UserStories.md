@@ -7,7 +7,7 @@
   - As a user I want to set my name on a player so that i don't forget which pieces i control.
  
 * Resume a Game
-  - As a user i want to resume a game where i left off at any time
+* [x] As a user i want to resume a game where i left off at any time 
 
 * Load a Game
   - As a user i want to load a game, chosen from a list of previous games

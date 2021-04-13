@@ -79,7 +79,7 @@ Prints the main menu
 
 * public static string PrintMenu()
 
-Lets you check the history for a specific game (moves, winner etc.)
+Lets you check the history for a specific game that has been saved in the database, you can see everything that happened in the game in a textlog and also how the board looked when the game ended and the remaining pieces coordinates and placement on the board
 
 * public static void GameHistory()
 

@@ -1,10 +1,10 @@
 # User stories
 
-
 * As a user I want to choose the amount (2-4) of players so that i can play against how many i want, well, under 4.
 * As a user i want to play against AI because i have no friends.
 * As a user I want to choose a color (Red, Green, Blue or Yellow) so that i get my favorite color.
 * As a user I want to set my name on a player so that i don't forget which pieces i control.
+* As a user I want to see the game history of a specific game so that i can check who won.
 
 ## Rules
 * As a user i want to see whose turn it is and where i am on the board when starting again.

@@ -268,7 +268,7 @@ namespace LudoGame
                 foreach (var move in game.Moves)
                 {
                     Dice.Value = move.DiceValue;
-                    game.MovePiece(move, true);
+                    game.MovePiece(move);
                     numberOfMoves++;
                 }
                 game.PrintLudoBoard();
@@ -286,7 +286,7 @@ namespace LudoGame
                 foreach (var move in game.Moves)
                 {
                     Dice.Value = move.DiceValue;
-                    game.MovePiece(move, fool);
+                    game.MovePiece(move);
                 }
 
                 bool gameRunning = true;
@@ -343,12 +343,14 @@ namespace LudoGame
                                                 {
                                                     success = false;
                                                     game.PrintLudoBoard();
+                                                    Setup.StringColor(player.Color);
                                                     Console.WriteLine("You're not able to move this piece. Try again...");
                                                     Clear();
                                                 }
                                                 break;
                                             default:
                                                 game.PrintLudoBoard();
+                                                Setup.StringColor(player.Color);
                                                 Console.WriteLine("Wrong piece value. Try again...");
                                                 success = false;
                                                 Clear();
@@ -358,6 +360,7 @@ namespace LudoGame
                                     else
                                     {
                                         game.PrintLudoBoard();
+                                        Setup.StringColor(player.Color);
                                         Console.WriteLine("Couldn't parse piece value. Try again...");
                                         Clear();
                                     }  
@@ -402,7 +405,7 @@ namespace LudoGame
                         if (!fool)
                         {
                             Move currentMove = new Move(player, pieceId, Dice.Value, player.ID, game.ID);
-                            game.MovePiece(currentMove, fool);
+                            game.MovePiece(currentMove);
                             game.Moves.Add(currentMove);
 
                             using var movecontext = new LudoDbContext();

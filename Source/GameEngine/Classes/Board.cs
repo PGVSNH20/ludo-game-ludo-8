@@ -54,7 +54,7 @@ namespace LudoGame
             return false;
         }
 
-        public void MovePiece(Move move, bool fool)
+        public void MovePiece(Move move)
         {
             var id = move.PieceID - 1;
             string message = $"Not made a move yet.";
@@ -101,18 +101,6 @@ namespace LudoGame
                 message = $"[!] {opponent.Name} got pushed back into their nest by {move.Player.Name}!";
                 var pushEvent = new Event(message, opponent.Color);
                 this.Events.Add(pushEvent);
-                if (!fool)
-                {
-                    if (move.Player.AI == false)
-                    {
-                        Console.ReadKey();
-                    }
-                    else if (move.Player.AI == true)
-                    {
-                        Thread.Sleep(500);
-                    }
-                }
-
                 Console.Clear();
             }
         }

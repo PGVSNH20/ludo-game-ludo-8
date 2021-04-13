@@ -47,7 +47,7 @@ namespace LudoTests
             playerArray[0].Pieces[0].CurrentPosition.X = playerArray[0].Pieces[0].StartPosition.X;
             playerArray[0].Pieces[0].CurrentPosition.Y = playerArray[0].Pieces[0].StartPosition.Y;
             Move move = new Move(playerArray[0], 1, Dice.Roll(5), playerArray[0].ID, game.ID);
-            game.MovePiece(move, true);
+            game.MovePiece(move);
             Assert.IsTrue(playerArray[0].Pieces[0].CurrentPosition.Compare(playerArray[0].Pieces[0].SixthPosition));
         }
 
@@ -62,15 +62,3 @@ namespace LudoTests
         }
     }
 }
-
-// Arrange
-//
-// The Arrange section of a unit test method initializes objects and sets the value of the data that is passed to the method under test.
-
-// Act
-//
-// The Act section invokes the method under test with the arranged parameters.
-
-// Assert
-//
-// The Assert section verifies that the action of the method under test behaves as expected.

@@ -9,8 +9,8 @@ namespace LudoGame.Database
         public DbSet<Move> Move { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-        => options.UseSqlite("Data Source=C:/Projects/Ludowreck8/Source/LudoGame/LudoDB.db");
+        => options.UseSqlite("Data Source=C:/Users/frejb/source/repos/ludo-game-ludo-8/Source/LudoGame/LudoDB.db");
         
-        // C:/Users/frejb/source/repos/ludo-game-ludo-8/Source/LudoGame/LudoDB.db
+        // C:/Projects/Ludowreck8/Source/LudoGame/LudoDB.db
     }
 }    

@@ -317,6 +317,7 @@ namespace LudoGame
                                     Console.WriteLine(" You can't move any piece.");
                                     fool = true;
                                     success = true;
+                                    Clear();
                                 }
 
                                 else
@@ -376,6 +377,7 @@ namespace LudoGame
                             {
                                 fool = true;
                                 Console.WriteLine($"{player.Name} can't move any piece.");
+                                player.Thinking();
                             }
                             else
                             {
@@ -420,16 +422,7 @@ namespace LudoGame
                             gameRunning = false;
                             game.PrintLudoBoard();
                             Setup.StringColor(player.Color);
-                            Console.WriteLine($"{player.Name} won!\n");
-
-                            foreach (var newPlayer1337 in game.Players)
-                            {
-                                for (int hej = 0; hej < newPlayer1337.Pieces.Length; hej++)
-                                {
-                                    Console.WriteLine($"{newPlayer1337.Color}: {newPlayer1337.Pieces[hej].CurrentPosition.X}, {player.Pieces[hej].CurrentPosition.Y}");
-                                }
-                            }
-                            Console.ReadKey();
+                            Console.WriteLine($"{player.Name} won!");
                         }
                     }
                 } while (gameRunning);

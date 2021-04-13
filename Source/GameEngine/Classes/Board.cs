@@ -119,6 +119,7 @@ namespace LudoGame
 
         public void PrintLudoBoard()
         {
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
             Console.WriteLine($"[i] The game({this.ID}) started at {this.GameStarted}");
             if(this.Events != null)

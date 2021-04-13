@@ -40,18 +40,6 @@ namespace LudoTests
         }
 
         [TestMethod]
-        public void WhenAtStartPosAndMoves5StepsExpectSixthPos()
-        {
-            var game = CreateTestBoard();
-            var playerArray = game.Players.ToArray();
-            playerArray[0].Pieces[0].CurrentPosition.X = playerArray[0].Pieces[0].StartPosition.X;
-            playerArray[0].Pieces[0].CurrentPosition.Y = playerArray[0].Pieces[0].StartPosition.Y;
-            Move move = new Move(playerArray[0], 1, Dice.Roll(5), playerArray[0].ID, game.ID);
-            game.MovePiece(move);
-            Assert.IsTrue(playerArray[0].Pieces[0].CurrentPosition.Compare(playerArray[0].Pieces[0].SixthPosition));
-        }
-
-        [TestMethod]
         public void WhenRollingSixMoveOutPieceToSixthPos()
         {
             var game = CreateTestBoard();

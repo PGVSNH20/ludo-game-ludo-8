@@ -6,8 +6,8 @@
   - As a user I want to choose a color (Red, Green, Blue or Yellow) so that i get my favorite color.
   - As a user I want to set my name on a player so that i don't forget which pieces i control.
  
- * Resume a game
-  * As a user i want to resume a game where i left off at any time
+* Resume a game
+  - As a user i want to resume a game where i left off at any time
 
 * Rules
   - As a user i want to see whose turn it is and where i am on the board when starting again.

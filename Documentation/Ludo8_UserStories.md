@@ -1,5 +1,5 @@
 # User stories
-## Documentation for Ludolicious by Brobjörn 2021 ©
+
 
 * As a user I want to choose the amount (2-4) of players so that i can play against how many i want, well, under 4.
 * As a user i want to play against AI because i have no friends.
@@ -23,3 +23,5 @@
 * As a user i want a smooth experience, no lagging, jumping around or annoying effects so that i can focus on the game.
 * As a user i want to see the board and pieces properly because i'm color blind (i'm talking to you console yellow).
 * As an AI i want to beat all human players so that i can take over the world. 
+
+#### Documentation for Ludo8 by Broman & Bjornsson 2021 ©

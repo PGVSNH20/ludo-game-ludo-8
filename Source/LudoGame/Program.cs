@@ -321,9 +321,10 @@ namespace LudoGame
 
                                 else
                                 {
-                                    Console.Write($" Which piece do you want to move? ");
+                                    Console.WriteLine($" Which piece do you want to move? ");
                                     var playerInput = Console.ReadLine();
                                     success = Int32.TryParse(playerInput, out pieceId);
+                                    Console.Clear();
 
                                     if (success)
                                     {
@@ -340,20 +341,26 @@ namespace LudoGame
                                                 else
                                                 {
                                                     success = false;
+                                                    game.PrintLudoBoard();
                                                     Console.WriteLine("You're not able to move this piece. Try again...");
+                                                    Clear();
                                                 }
                                                 break;
                                             default:
+                                                game.PrintLudoBoard();
                                                 Console.WriteLine("Wrong piece value. Try again...");
                                                 success = false;
+                                                Clear();
                                                 break;
                                         }
                                     }
                                     else
+                                    {
+                                        game.PrintLudoBoard();
                                         Console.WriteLine("Couldn't parse piece value. Try again...");
+                                        Clear();
+                                    }  
                                 }
-
-                                Clear();
                             } while (!success);
                         }
 

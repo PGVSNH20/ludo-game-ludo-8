@@ -63,9 +63,6 @@ namespace LudoTests
     }
 }
 
-
-
-
 // Arrange
 //
 // The Arrange section of a unit test method initializes objects and sets the value of the data that is passed to the method under test.
@@ -77,7 +74,3 @@ namespace LudoTests
 // Assert
 //
 // The Assert section verifies that the action of the method under test behaves as expected.
-
-
-
-

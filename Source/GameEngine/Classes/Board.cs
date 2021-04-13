@@ -99,7 +99,6 @@ namespace LudoGame
             else
             {
                 message = $"[!] {opponent.Name} got pushed back into their nest by {move.Player.Name}!";
-                Console.WriteLine(message);
                 var pushEvent = new Event(message, opponent.Color);
                 this.Events.Add(pushEvent);
                 if (!fool)
@@ -120,6 +119,8 @@ namespace LudoGame
 
         public void PrintLudoBoard()
         {
+            Console.WriteLine("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            Console.WriteLine($"[i] The game({this.ID}) started at {this.GameStarted}");
             if(this.Events != null)
             {
                 foreach(var e in this.Events)

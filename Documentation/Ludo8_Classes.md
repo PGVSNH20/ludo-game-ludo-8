@@ -1,4 +1,4 @@
-# Documentation for a Ludo game by group 8 (Marcus Broman and Frej Björnsson) 
+# Ludo8 Classes
 
 ## GameEngine
 ### Board

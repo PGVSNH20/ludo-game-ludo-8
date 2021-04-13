@@ -1,9 +1,9 @@
 # User stories
 
 ## Start a New Game
-:white_square_button: As a user I want to choose the amount (2-4) of players so that i can play against how many i want
+[ ] As a user I want to choose the amount (2-4) of players so that i can play against how many i want
 
-:white_check_mark: As a user i want to play against AI if i don't find friends to play with
+- [ ] As a user i want to play against AI if i don't find friends to play with
 - [ ] As a user I want to choose a color (Red, Green, Blue or Yellow) so that i get my favorite color.
 - [ ] As a user I want to set my name on a player so that i don't forget which pieces i control.
  

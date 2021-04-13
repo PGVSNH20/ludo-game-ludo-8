@@ -1,7 +1,7 @@
 # Ludo8 Classes
 
 ## GameEngine
-### Board
+### Board :white_square_button:
         public int ID { get; set; }
         public List<Move> Moves { get; set; }
         [NotMapped]
@@ -9,10 +9,10 @@
         public DateTime GameStarted { get; set; }
         public DateTime? GameEnded { get; set; }
 
-### Dice
+### Dice :game_die:
        public static int Value { get; set; }
 
-### Move
+### Move :feet:
         [NotMapped]
         public Player Player { get; set; }
         public int ID { get; set; }
@@ -21,7 +21,7 @@
         public int DiceValue { get; set; }
         public int BoardID { get; set; }
 
-###  Piece
+###  Piece :small_red_triangle:
         public int ID { get; set; }
         public Colors Color { get; set; }
         public int Moves { get; set; } = 0;
@@ -34,7 +34,7 @@
         public int MoveDirectionX { get; set; } = 0;
         public int MoveDirectionY { get; set; } = 0;
 
-### Player
+### Player :bowtie:
         public int ID { get; set; }
         public string Name { get; set; }
         public Colors Color { get; set; }
@@ -43,29 +43,20 @@
         public int BoardID { get; set; }
         public bool AI { get; set; }
         
-### Position
+### Position :round_pushpin:
         public int X { get; set; }
         public int Y { get; set; }
-### Setup
+### Setup :black_square_button:
         public static Piece[] Pieces(Colors color)
         
-### Event
+### Event :triangular_flag_on_post:
         public string Message { get; set; }
         public Colors Color { get; set; }
 
 ## LudoGame
-### LudoDbContext : DbContext
+### LudoDbContext : DbContext :link:
         public DbSet<Board> Board { get; set; }
         public DbSet<Player> Player { get; set; }
         public DbSet<Move> Move { get; set; }
         
-
-        
-### Program
-
-
-
-
-
 #### Documentation for Ludolicious by Broman & Bjornsson 2021 ©
-

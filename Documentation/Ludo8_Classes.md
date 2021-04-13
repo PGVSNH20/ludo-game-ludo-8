@@ -49,6 +49,9 @@
 ### Setup
         public static Piece[] Pieces(Colors color)
         
+### Event
+        public string Message { get; set; }
+        public Colors Color { get; set; }
 
 ## LudoGame
 ### LudoDbContext : DbContext

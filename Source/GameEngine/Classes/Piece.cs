@@ -70,7 +70,7 @@ namespace LudoGame
             }
         }
 
-        public bool PushOpponent(List<Player> players)
+        public Player PushOpponent(List<Player> players)
         {
             foreach (var player in players)
             {
@@ -83,12 +83,12 @@ namespace LudoGame
                             player.Pieces[i].CurrentPosition.X = player.Pieces[i].NestPosition.X;
                             player.Pieces[i].CurrentPosition.Y = player.Pieces[i].NestPosition.Y;
                             player.Pieces[i].Moves = 0;
-                            return true;
+                            return player;
                         }
                     }
                 }
             }
-            return false;
+            return null;
         }
 
         public void TrackMovement()

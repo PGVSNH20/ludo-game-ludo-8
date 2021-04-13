@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GameEngine;
+using GameEngine.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.IO;
@@ -13,6 +15,8 @@ namespace LudoGame
 
     public class Board
     {
+        [NotMapped]
+        public List<Event> Events { get; set; }
         public int ID { get; set; }
         public List<Move> Moves { get; set; }
         [NotMapped]
@@ -21,8 +25,10 @@ namespace LudoGame
         public DateTime? GameEnded { get; set; }
 
         public Board()
-        { 
+        {
+
         }
+
         public Board(List<Player> players, List<Move> moves, DateTime gameStarted)
         {
             Players = players;
@@ -48,34 +54,66 @@ namespace LudoGame
             return false;
         }
 
-        public void MovePiece(Move move)
+        public void MovePiece(Move move, bool fool)
         {
             var id = move.PieceID - 1;
+            string message = $"Not made a move yet.";
             for (int remainingMoves = move.DiceValue; remainingMoves > 0; remainingMoves--)
             {
                 if (move.Player.Pieces[id].CurrentPosition.Compare(move.Player.Pieces[id].NestPosition) && Dice.Value == 1 || move.Player.Pieces[id].CurrentPosition.Compare(move.Player.Pieces[id].NestPosition) && Dice.Value == 6)
                 {
                     move.Player.Pieces[id].MoveOut();
                     remainingMoves = 0;
+                    message = $"[@] {move.Player.Name} moved piece {move.PieceID} out of nest";
                 }
                 else
                 {
                     move.Player.Pieces[id].Moves++;
                     move.Player.Pieces[id].TrackMovement();
+                    message = $"[+] {move.Player.Name} rolled a {move.DiceValue} and moved piece {move.PieceID}.";
+
+                    if (move.Player.Pieces[id].CurrentPosition.Compare(move.Player.Pieces[id].EnterFinalTrackPosition))
+                    {
+                        message = $"[+] A {move.DiceValue} was rolled and {move.Player.Name} entered the final track with piece {move.PieceID}.";
+                    }
                 }
             }
 
-            if (move.Player.Pieces[id].PushOpponent(this.Players))
+            if (move.Player.Pieces[id].CurrentPosition.Compare(move.Player.Pieces[id].EndPosition))
             {
-                Console.WriteLine($"{move.Player.Name} pushed opponent into their nest!");
-                if (move.Player.AI == false)
+                message = $"[$] {move.Player.Name} has moved piece {move.PieceID} into goal but still got some pieces out on the board.";
+            }
+
+            else if (this.Ended(move.Player))
+            {
+                message = $"[$] Congratulations, {move.Player.Name} won the game!";
+            }
+
+            Event moveEvent = new Event(message, move.Player.Color);
+            this.Events.Add(moveEvent);
+
+            Player opponent = move.Player.Pieces[move.PieceID - 1].PushOpponent(this.Players);
+
+            if (opponent == null) { }
+
+            else
+            {
+                message = $"[!] {opponent.Name} got pushed back into their nest by {move.Player.Name}!";
+                Console.WriteLine(message);
+                var pushEvent = new Event(message, opponent.Color);
+                this.Events.Add(pushEvent);
+                if (!fool)
                 {
-                    Console.ReadKey();
+                    if (move.Player.AI == false)
+                    {
+                        Console.ReadKey();
+                    }
+                    else if (move.Player.AI == true)
+                    {
+                        Thread.Sleep(500);
+                    }
                 }
-                else if (move.Player.AI == true)
-                {
-                    Thread.Sleep(500);
-                }
+                
 
                 Console.Clear();
             }
@@ -83,8 +121,18 @@ namespace LudoGame
 
         public void PrintLudoBoard()
         {
-
+            if(this.Events != null)
+            {
+                foreach(var e in this.Events)
+                {
+                    Setup.StringColor(e.Color);
+                    Console.WriteLine(e.Message);
+                }
+            }
+            
             Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("             _____________________\n");
+            
             var allLines = File.ReadAllLines(@"..\..\..\ludo-board.txt");
             for (int y = 0; y < allLines.Length; y++)
             {
@@ -95,6 +143,11 @@ namespace LudoGame
                 {
                     int piecesOnSpot = 0;
                     bool playerPosition = false;
+                    if(x == 0)
+                    {
+                        Console.Write("             ");
+                    }
+
                     if (column[x] == '$')
                     {
                         Console.Write("$ ");
@@ -199,7 +252,7 @@ namespace LudoGame
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine();
+            Console.WriteLine("             _____________________\n");
         }
     }
 }

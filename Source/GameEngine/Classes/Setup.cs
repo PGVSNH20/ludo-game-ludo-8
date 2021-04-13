@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameEngine.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,11 @@ namespace LudoGame
 {
     public class Setup
     {
+        public static void Lists(Board game)
+        {
+            game.Events = new List<Event>();
+        }
+
         public static void StringColor(Colors playerColor)
         {
             if (playerColor == Colors.Red)

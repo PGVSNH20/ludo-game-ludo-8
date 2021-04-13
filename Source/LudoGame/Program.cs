@@ -224,7 +224,7 @@ namespace LudoGame
                         Console.WriteLine($"{gameOption.ID}. {gameOption.GameEnded}");
                     }
 
-                    Console.Write("\nEnter the Game ID you would like to watch :\t");
+                    Console.Write("\nEnter the Game ID you would like to watch : \t");
                     var userInput = Console.ReadLine();
                     var success = Int32.TryParse(userInput, out int result);
 

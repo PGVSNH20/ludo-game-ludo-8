@@ -78,15 +78,15 @@ namespace LudoGame
                     }
                 }
             }
-
-            if (move.Player.Pieces[id].CurrentPosition.Compare(move.Player.Pieces[id].EndPosition))
-            {
-                message = $"[$] {move.Player.Name} has moved piece {move.PieceID} into goal but still got some pieces out on the board.";
-            }
-
-            else if (this.Ended(move.Player))
+            
+            if (this.Ended(move.Player))
             {
                 message = $"[$] Congratulations, {move.Player.Name} won the game!";
+            }
+
+            else if (move.Player.Pieces[id].CurrentPosition.Compare(move.Player.Pieces[id].EndPosition))
+            {
+                message = $"[$] {move.Player.Name} has moved piece {move.PieceID} into goal but still got some pieces out on the board.";
             }
 
             Event moveEvent = new Event(message, move.Player.Color);

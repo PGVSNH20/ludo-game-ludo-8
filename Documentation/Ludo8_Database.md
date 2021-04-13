@@ -8,13 +8,13 @@ Also a lot of third-party tools can be used with SQLite to make a developers lif
 
 The following table shows a summary of some pros and cons with SQLite.
 
-| `SQLite Pros`           | `SQLite Cons`                                         | 
-| :-------------:         |:-------------:                                        | 
-| Lightweight             | Restricted Database Size                              | 
-| Fast                    | Can only handle low to medium traffic HTTP requests.  |
-| Reliable                |                                                       |
-| No Installation Needed  |                                                       |
-| Portable                |                                                       |
+| `SQLite Pros`           | `SQLite Cons`                                             | 
+| :-------------:         |:-------------:                                            | 
+| :heavy_check_mark: Lightweight             | :x: Restricted Database Size                              | 
+| :heavy_check_mark: Fast                    | :x: Can only handle low to medium traffic HTTP requests.  |
+| :heavy_check_mark: Reliable                |                                                           |
+| :heavy_check_mark: No Installation Needed  |                                                           |
+| :heavy_check_mark: Portable                |                                                           |
 
 
 #### Documentation for Ludolicious by Broman & Bjornsson 2021 ©

@@ -32,6 +32,9 @@ namespace LudoGame
             else if (name == "" && aiplayer == true)
                 Name = $"{color} AI";
 
+            else if (aiplayer == true)
+                Name = name + " AI";
+
             else
                 Name = name;
 

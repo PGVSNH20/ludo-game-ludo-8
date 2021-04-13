@@ -93,7 +93,7 @@ namespace LudoGame
                                 name = Console.ReadLine();
                                 players.Add(new Player(name, colorType, true));
                                 Console.Clear();
-                                Console.WriteLine($"Adding new AI({currentColor})...");
+                                Console.WriteLine($"Adding new {name} AI({currentColor})...");
                                 break;
                             default:
                                 Console.WriteLine("Couldn't find your value in the menu.");

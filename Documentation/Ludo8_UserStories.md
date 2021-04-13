@@ -1,5 +1,5 @@
-# User stories
-
+# User stories :pencil2::page_with_curl:
+ 
 ## Start a New Game
 - [ ] As a user I want to choose the amount (2-4) of players so that i can play against how many i want
 - [x] As a user i want to play against AI if i don't find friends to play with

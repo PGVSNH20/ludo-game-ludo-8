@@ -25,7 +25,7 @@
 ## User Experience
 - [x] As a user i want to see whose turn it is and where i am on the board when starting again.
 - [x] As a user i want a menu that is easy to understand so that i can enjoy the game instead of navigating the menu
-- [x] and [ ] As a user i want a smooth experience, no lagging, jumping around or annoying effects so that i can focus on the game.
+- [x] As a user i want a smooth experience, no lagging, jumping around or annoying effects so that i can focus on the game.
 - [x] As a user i want to see the board and pieces properly because i'm color blind (i'm talking to you console yellow).
 - [x] As an AI i want to beat all human players so that i can take over the world. 
 

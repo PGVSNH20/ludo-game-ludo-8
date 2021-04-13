@@ -234,7 +234,6 @@ namespace LudoGame
                         var players = context.Player.Where(p => p.BoardID == game.ID).ToList();
                         var moves = context.Move.Where(m => m.BoardID == game.ID).ToList();
                         Console.Clear();
-                        Console.WriteLine($"Loading game({game.ID})...");
 
                         foreach (var player in players)
                         {
@@ -248,7 +247,6 @@ namespace LudoGame
 
                         game.Players = players;
                         game.Moves = moves;
-                        Clear();
                         isRunning = false;
                     }
 
@@ -274,7 +272,10 @@ namespace LudoGame
                     numberOfMoves++;
                 }
                 game.PrintLudoBoard();
-                Console.WriteLine($"This game took {numberOfMoves} moves to finish.");
+                var duration = (game.GameEnded - game.GameStarted).GetValueOrDefault();
+                var totalMinutes = (int)duration.TotalMinutes;
+
+                Console.WriteLine($"This game took {numberOfMoves} moves to finish and lasted for {totalMinutes}minutes");
                 Clear();
             }
 

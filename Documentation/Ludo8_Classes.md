@@ -1,4 +1,4 @@
-# Documentation for a Ludo game by group 8 (Marcus Broman and Frej Björnsson) 
+# Ludo8 Classes
 
 ## GameEngine
 ### Board
@@ -49,6 +49,9 @@
 ### Setup
         public static Piece[] Pieces(Colors color)
         
+### Event
+        public string Message { get; set; }
+        public Colors Color { get; set; }
 
 ## LudoGame
 ### LudoDbContext : DbContext

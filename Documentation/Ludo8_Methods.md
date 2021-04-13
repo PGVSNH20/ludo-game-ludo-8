@@ -18,8 +18,6 @@ For rolling the dice and returning a random value between 1 and 6.
 
 * public static int Roll() 
 
-## Move
-
 ## Piece
 To check if a piece can make a legal move
 
@@ -80,5 +78,9 @@ Renders the board and connects all other classes, handles user errors, keeps tra
 Prints the main menu
 
 * public static string PrintMenu()
+
+Lets you check the history for a specific game that has been saved in the database, you can see everything that happened in the game in a textlog and also how the board looked when the game ended and the remaining pieces coordinates and placement on the board
+
+* public static void GameHistory()
 
 #### Documentation for Ludolicious by Broman & Bjornsson 2021 ©
